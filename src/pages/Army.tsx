@@ -1,9 +1,10 @@
 import React from "react";
+import { Page } from "../components/commons";
 
 export const Army = () => {
   return (
-    <div>
+    <Page>
       <h1>Army sheet</h1>
-    </div>
+    </Page>
   );
 };
