@@ -1,10 +1,10 @@
 import React from "react";
-import { Page } from "../components/commons";
+import { Page, Title } from "../components/Page";
 
 export const Home = () => {
   return (
     <Page>
-      <h1>Home</h1>
+      <Title>- Home -</Title>
     </Page>
   );
 };
