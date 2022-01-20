@@ -5,10 +5,9 @@ import {
   faTimes,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { ChangeEvent } from "react";
 import styled from "styled-components";
-import { Button, DangerButton } from "../../components/Button";
+import { Button } from "../../components/Button";
 import { FIELD_HEIGHT, Input } from "../../components/Form";
 import { FireTeam, Operative } from "../../types";
 import { generateOperative } from "./data";
@@ -95,51 +94,49 @@ export const OperativesTable = ({
             </td>
             <td>
               <Button
+                icon={faArrowUp}
+                title="Move operative up"
                 onClick={() => moveOperativeUp(teamIndex, opIndex)}
                 disabled={opIndex === 0}
-                title="Move operative up"
                 small
                 square
-              >
-                <FontAwesomeIcon icon={faArrowUp} />
-              </Button>
+              />
               <Button
+                icon={faArrowDown}
+                title="Move operative down"
                 onClick={() => moveOperativeDown(teamIndex, opIndex)}
                 disabled={opIndex === operatives.length - 1}
-                title="Move operative down"
                 small
                 square
-              >
-                <FontAwesomeIcon icon={faArrowDown} />
-              </Button>
-              <DangerButton
+              />
+              <Button
+                icon={faTimes}
+                title="Empty operative"
                 onClick={() => emptyOperative(teamIndex, opIndex)}
                 disabled={!operative.name && !operative.notes}
-                title="Empty operative"
                 small
                 square
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </DangerButton>
-              <DangerButton
-                color="danger"
+                danger
+              />
+              <Button
+                icon={faTrashAlt}
+                title="Remove operative"
                 onClick={() => removeOperative(teamIndex, opIndex)}
                 disabled={operatives.length < 2}
-                title="Remove operative"
                 small
                 square
-              >
-                <FontAwesomeIcon icon={faTrashAlt} />
-              </DangerButton>
+                danger
+              />
             </td>
           </tr>
         ))}
         <tr>
           <td colSpan={4}>
-            <Button onClick={() => addOperative(teamIndex)}>
-              <FontAwesomeIcon icon={faPlus} />
-              <span>Add operative</span>
-            </Button>
+            <Button
+              label="Add operative"
+              icon={faPlus}
+              onClick={() => addOperative(teamIndex)}
+            />
           </td>
         </tr>
       </tbody>

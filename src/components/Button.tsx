@@ -1,14 +1,34 @@
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 import styled from "styled-components";
 
-interface ButtonProps {
+interface ButtonContainerProps {
+  danger?: boolean;
   small?: boolean;
   square?: boolean;
 }
 
+type ButtonProps = {
+  danger?: boolean;
+  disabled?: boolean;
+  icon?: IconDefinition;
+  label?: string;
+  onClick?: () => void;
+  title?: string;
+} & ButtonContainerProps;
+
+export const Button = ({ icon, label, ...rest }: ButtonProps) => (
+  <ButtonContainer {...rest}>
+    {icon && <FontAwesomeIcon icon={icon} />}
+    {label && <span>{label}</span>}
+  </ButtonContainer>
+);
+
 const BUTTON_HEIGHT = 40;
 const BUTTON_HEIGHT_SM = 25;
 
-export const Button = styled.button<ButtonProps>`
+const ButtonContainer = styled.button<ButtonContainerProps>`
   height: ${({ small }) => (small ? BUTTON_HEIGHT_SM : BUTTON_HEIGHT)}px;
   width: ${({ small, square }) => {
     if (square) {
@@ -23,7 +43,8 @@ export const Button = styled.button<ButtonProps>`
   }};
   background: #fff;
   border: 1px solid ${({ theme }) => theme.colors.bg2};
-  color: ${({ theme }) => theme.colors.accent2};
+  color: ${({ danger, theme }) =>
+    danger ? theme.colors.accent : theme.colors.accent2};
   text-transform: uppercase;
   font-family: ${({ theme }) => theme.fonts.header};
   font-size: ${({ small, theme }) =>
@@ -38,8 +59,10 @@ export const Button = styled.button<ButtonProps>`
 
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    background: ${({ theme }) => theme.colors.accent2};
-    border-color: ${({ theme }) => theme.colors.accent2};
+    background: ${({ danger, theme }) =>
+      danger ? theme.colors.accent : theme.colors.accent2};
+    border-color: ${({ danger, theme }) =>
+      danger ? theme.colors.accent : theme.colors.accent2};
     color: ${({ theme }) => theme.colors.text2};
   }
   &:disabled {
@@ -52,16 +75,5 @@ export const Button = styled.button<ButtonProps>`
   }
   & span:last-child {
     margin-left: ${({ theme }) => theme.sizes.sm};
-  }
-`;
-
-export const DangerButton = styled(Button)`
-  color: ${({ theme }) => theme.colors.accent};
-
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
-    background: ${({ theme }) => theme.colors.accent};
-    border-color: ${({ theme }) => theme.colors.accent};
-    color: ${({ theme }) => theme.colors.text2};
   }
 `;

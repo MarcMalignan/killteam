@@ -4,11 +4,10 @@ import {
   faPlus,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Fragment } from "react";
-import { Button, DangerButton } from "../../components/Button";
+import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
-import { Field, FieldLabel, Input } from "../../components/Form";
+import { Field, Input } from "../../components/Form";
 import { Section, Separator, SubTitle } from "../../components/Page";
 import { FireTeam, Roster } from "../../types";
 import { generateTeam } from "./data";
@@ -63,35 +62,30 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
                 <div>Fire Team #{teamIndex + 1}</div>
                 <div>
                   <Button
+                    icon={faArrowUp}
+                    title="Move team up"
                     onClick={() => moveTeamUp(teamIndex)}
                     disabled={teamIndex === 0}
-                    title="Move team up"
                     square
-                  >
-                    <FontAwesomeIcon icon={faArrowUp} />
-                  </Button>
+                  />
                   <Button
+                    icon={faArrowDown}
+                    title="Move team down"
                     onClick={() => moveTeamDown(teamIndex)}
                     disabled={teamIndex === teams.length - 1}
-                    title="Move team down"
                     square
-                  >
-                    <FontAwesomeIcon icon={faArrowDown} />
-                  </Button>
-                  <DangerButton
+                  />
+                  <Button
+                    label="Remove fire team"
+                    icon={faTrashAlt}
                     onClick={() => removeTeam(teamIndex)}
                     disabled={teams.length < 2}
-                  >
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                    <span>Remove fire team</span>
-                  </DangerButton>
+                    danger
+                  />
                 </div>
               </RowContainer>
             </SubTitle>
-            <Field small>
-              <FieldLabel htmlFor={`fireTeam${teamIndex + 1}_name`}>
-                Name:
-              </FieldLabel>
+            <Field id={`fireTeam${teamIndex + 1}_name`} label="Name:" small>
               <Input
                 id={`fireTeam${teamIndex + 1}_name`}
                 type="text"
@@ -101,10 +95,11 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
                 }
               />
             </Field>
-            <Field small>
-              <FieldLabel htmlFor={`fireTeam${teamIndex + 1}_archetype`}>
-                Archetype:
-              </FieldLabel>
+            <Field
+              id={`fireTeam${teamIndex + 1}_archetype`}
+              label="Archetype:"
+              small
+            >
               <Input
                 id={`fireTeam${teamIndex + 1}_archetype`}
                 type="text"
@@ -129,10 +124,7 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
             <RowContainer>
               <div></div>
               <div>
-                <Button onClick={addTeam}>
-                  <FontAwesomeIcon icon={faPlus} />
-                  <span>Add fire team</span>
-                </Button>
+                <Button label="Add fire team" icon={faPlus} onClick={addTeam} />
               </div>
               <div></div>
             </RowContainer>

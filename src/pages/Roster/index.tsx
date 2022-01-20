@@ -1,9 +1,8 @@
 import { faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
-import { Field, FieldLabel, Input, Textarea } from "../../components/Form";
+import { Field, Input, Textarea } from "../../components/Form";
 import {
   Page,
   Section,
@@ -45,14 +44,18 @@ export const Roster = () => {
             <div></div>
             <div>- Kill Team Roster -</div>
             <div>
-              <Button title="Upload roster" onClick={load}>
-                <FontAwesomeIcon icon={faUpload} />
-                <span>Load</span>
-              </Button>
-              <Button title="Save roster" onClick={save}>
-                <FontAwesomeIcon icon={faSave} />
-                <span>Save</span>
-              </Button>
+              <Button
+                label="Load"
+                icon={faUpload}
+                title="Upload roster"
+                onClick={load}
+              />
+              <Button
+                label="Save"
+                icon={faSave}
+                title="Save roster"
+                onClick={save}
+              />
             </div>
           </RowContainer>
         </Title>
@@ -62,8 +65,7 @@ export const Roster = () => {
 
       <Section>
         <SubTitle>Roster Information</SubTitle>
-        <Field>
-          <FieldLabel htmlFor="name">Name:</FieldLabel>
+        <Field id="name" label="Name:">
           <Input
             id="name"
             type="text"
@@ -71,8 +73,7 @@ export const Roster = () => {
             onChange={(e) => editRoster("name", e.currentTarget.value)}
           />
         </Field>
-        <Field>
-          <FieldLabel htmlFor="faction">Faction:</FieldLabel>
+        <Field id="faction" label="Faction:">
           <Input
             id="faction"
             type="text"
@@ -80,8 +81,7 @@ export const Roster = () => {
             onChange={(e) => editRoster("faction", e.currentTarget.value)}
           />
         </Field>
-        <Field>
-          <FieldLabel htmlFor="keyword">Selectable Keyword:</FieldLabel>
+        <Field id="keyword" label="Selectable Keyword:">
           <Input
             id="keyword"
             type="text"

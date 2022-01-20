@@ -1,12 +1,25 @@
+import React, { FC } from "react";
 import styled from "styled-components";
 
 export const FIELD_HEIGHT = 30;
 
-interface FieldProps {
+interface FieldContainerProps {
   small?: boolean;
 }
 
-export const Field = styled.div<FieldProps>`
+type FieldProps = {
+  id?: string;
+  label?: string;
+} & FieldContainerProps;
+
+export const Field: FC<FieldProps> = ({ children, id, label }) => (
+  <FieldContainer>
+    {label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
+    {children}
+  </FieldContainer>
+);
+
+const FieldContainer = styled.div<FieldContainerProps>`
   display: flex;
   align-items: center;
   width: ${({ small }) => (small ? "75%" : "100%")};
@@ -16,7 +29,7 @@ export const Field = styled.div<FieldProps>`
   }
 `;
 
-export const FieldLabel = styled.label`
+const FieldLabel = styled.label`
   width: 25%;
   font-weight: bold;
   text-transform: uppercase;
