@@ -2,12 +2,25 @@ import styled from "styled-components";
 
 interface ButtonProps {
   small?: boolean;
+  square?: boolean;
 }
 
+const BUTTON_HEIGHT = 40;
+const BUTTON_HEIGHT_SM = 25;
+
 export const Button = styled.button<ButtonProps>`
+  height: ${({ small }) => (small ? BUTTON_HEIGHT_SM : BUTTON_HEIGHT)}px;
+  width: ${({ small, square }) => {
+    if (square) {
+      return `${small ? BUTTON_HEIGHT_SM : BUTTON_HEIGHT}px`;
+    }
+    return "auto";
+  }};
   margin: 0;
-  padding: ${({ small, theme }) =>
-    small ? theme.sizes.sm : `${theme.sizes.sm} ${theme.sizes.md}`};
+  padding: ${({ small, square, theme }) => {
+    if (square) return "none";
+    return small ? `0 ${theme.sizes.sm}` : `0 ${theme.sizes.md}`;
+  }};
   background: #fff;
   border: 1px solid ${({ theme }) => theme.colors.bg2};
   color: ${({ theme }) => theme.colors.accent2};

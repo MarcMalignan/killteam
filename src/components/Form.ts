@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 export const FIELD_HEIGHT = 30;
 
-export const Field = styled.div`
+interface FieldProps {
+  small?: boolean;
+}
+
+export const Field = styled.div<FieldProps>`
   display: flex;
   align-items: center;
-  width: 100%;
+  width: ${({ small }) => (small ? "75%" : "100%")};
 
   &:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.sizes.md};

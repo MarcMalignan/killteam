@@ -20,6 +20,14 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.accent};
 `;
 
+export const SubTitle = styled.h2`
+  margin: 0 0 ${({ theme }) => theme.sizes.md};
+  text-transform: uppercase;
+  font-family: ${({ theme }) => theme.fonts.header};
+  font-size: ${({ theme }) => theme.fontSizes.lg};
+  color: ${({ theme }) => theme.colors.accent};
+`;
+
 export const Section = styled.section`
   padding: 0 ${({ theme }) => theme.sizes.lg};
 `;
