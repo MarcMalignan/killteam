@@ -2,7 +2,7 @@ import { faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
-import { Field, Input, Select, Textarea } from "../../components/Form";
+import { Field, Textarea } from "../../components/Form";
 import {
   Page,
   Section,
@@ -10,19 +10,15 @@ import {
   SubTitle,
   Title,
 } from "../../components/Page";
-import { compendium } from "../../compendium";
 import { Faction, Roster as RosterType } from "../../types";
+import { findFaction } from "../../utils";
 import { EMPTY_ROSTER } from "./data";
+import { InfoForm } from "./InfoForm";
 import { TeamsForm } from "./TeamsForm";
-
-const findFaction = (factionName: string) =>
-  compendium.armies.find((army) =>
-    army.factions.find((faction) => faction.name === factionName)
-  );
 
 export const Roster = () => {
   const [roster, setRoster] = useState(EMPTY_ROSTER);
-  const [faction, setFaction] = useState<Faction>();
+  const [compendiumFaction, setCompendiumFaction] = useState<Faction>();
 
   // TODO: implement save
   const save = () => {
@@ -41,11 +37,11 @@ export const Roster = () => {
       return alert("ERROR - Loading data");
     }
 
-    const dataFaction = findFaction(data.faction);
-    if (!dataFaction) return alert("ERROR - Kill Team not found");
+    const factionData = findFaction(data.faction);
+    if (!factionData) return alert("ERROR - Kill Team not found");
 
     setRoster(data);
-    setFaction(dataFaction);
+    setCompendiumFaction(factionData);
   };
 
   const editRoster = (field: keyof RosterType, value: any) =>
@@ -78,63 +74,32 @@ export const Roster = () => {
 
       <Separator />
 
-      <Section>
-        <SubTitle>Roster Information</SubTitle>
-        <Field id="faction" label="Faction:">
-          <Select
-            id="faction"
-            value={roster.faction}
-            onChange={(e) => {
-              const factionName = e.currentTarget.value;
-              editRoster("faction", factionName);
-              setFaction(findFaction(factionName));
-            }}
-          >
-            <option value=""></option>
-            {compendium.armies.map((army) => (
-              <optgroup key={army.name} label={army.name}>
-                {army.factions.map((faction) => (
-                  <option key={faction.name} value={faction.name}>
-                    {faction.name}
-                  </option>
-                ))}
-              </optgroup>
-            ))}
-          </Select>
-        </Field>
-        <Field id="keyword" label="Selectable Keyword:">
-          <Select
-            id="keyword"
-            value={roster.keyword}
-            onChange={(e) => editRoster("keyword", e.currentTarget.value)}
-            disabled={!faction?.selectableKeywords}
-          >
-            <option value=""></option>
-            {faction?.selectableKeywords?.map((keyword) => (
-              <option key={keyword} value={keyword}>
-                {keyword}
-              </option>
-            ))}
-          </Select>
-        </Field>
-      </Section>
+      <InfoForm
+        compendiumFaction={compendiumFaction}
+        roster={roster}
+        editRoster={editRoster}
+        setCompendiumFaction={setCompendiumFaction}
+        setRoster={setRoster}
+      />
 
       <Separator />
 
-      <TeamsForm editRoster={editRoster} teams={roster.teams} />
-
-      <Separator />
-
-      <Section>
-        <SubTitle>Notes</SubTitle>
-        <Field>
-          <Textarea
-            id="notes"
-            value={roster.notes}
-            onChange={(e) => editRoster("notes", e.currentTarget.value)}
-          ></Textarea>
-        </Field>
-      </Section>
+      {roster.faction && (
+        <>
+          <TeamsForm editRoster={editRoster} teams={roster.teams} />
+          <Separator />
+          <Section>
+            <SubTitle>Notes</SubTitle>
+            <Field>
+              <Textarea
+                id="notes"
+                value={roster.notes}
+                onChange={(e) => editRoster("notes", e.currentTarget.value)}
+              ></Textarea>
+            </Field>
+          </Section>
+        </>
+      )}
     </Page>
   );
 };
