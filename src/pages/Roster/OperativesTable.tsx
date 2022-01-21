@@ -1,19 +1,16 @@
 import {
   faArrowDown,
   faArrowUp,
-  faPlus,
   faTimes,
-  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { ChangeEvent } from "react";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { FIELD_HEIGHT, Input } from "../../components/Form";
 import { FireTeam, Operative } from "../../types";
-import { generateOperative } from "./data";
 
 interface OperativesTableProps {
-  editTeam: (teamIndex: number, field: keyof FireTeam, value: any) => void;
+  editTeam: (teamIndex: number, values: Partial<FireTeam>) => void;
   operatives: Operative[];
   teamIndex: number;
 }
@@ -28,20 +25,20 @@ export const OperativesTable = ({
     (event: ChangeEvent<HTMLInputElement>) => {
       const newOps = [...operatives];
       newOps[opIndex][fieldName] = event.target.value;
-      editTeam(teamIndex, "operatives", newOps);
+      editTeam(teamIndex, { operatives: newOps });
     };
 
-  const addOperative = (teamIndex: number) => {
-    const newOps = [...operatives, generateOperative()];
-    editTeam(teamIndex, "operatives", newOps);
-  };
+  // const addOperative = (teamIndex: number) => {
+  //   const newOps = [...operatives, generateOperative()];
+  //   editTeam(teamIndex, { operatives: newOps });
+  // };
 
   const moveOperativeUp = (teamIndex: number, opIndex: number) => {
     const newOps = [...operatives];
     const source = newOps[opIndex];
     newOps.splice(opIndex - 1, 0, { ...source });
     newOps.splice(opIndex + 1, 1);
-    editTeam(teamIndex, "operatives", newOps);
+    editTeam(teamIndex, { operatives: newOps });
   };
 
   const moveOperativeDown = (teamIndex: number, opIndex: number) => {
@@ -49,21 +46,21 @@ export const OperativesTable = ({
     const source = newOps[opIndex];
     newOps.splice(opIndex + 2, 0, { ...source });
     newOps.splice(opIndex, 1);
-    editTeam(teamIndex, "operatives", newOps);
+    editTeam(teamIndex, { operatives: newOps });
   };
 
   const emptyOperative = (teamIndex: number, opIndex: number) => {
     const newOps = [...operatives];
     newOps[opIndex].name = "";
     newOps[opIndex].notes = "";
-    editTeam(teamIndex, "operatives", newOps);
+    editTeam(teamIndex, { operatives: newOps });
   };
 
-  const removeOperative = (teamIndex: number, opIndex: number) => {
-    const newOps = [...operatives];
-    newOps.splice(opIndex, 1);
-    editTeam(teamIndex, "operatives", newOps);
-  };
+  // const removeOperative = (teamIndex: number, opIndex: number) => {
+  //   const newOps = [...operatives];
+  //   newOps.splice(opIndex, 1);
+  //   editTeam(teamIndex, { operatives: newOps });
+  // };
 
   return (
     <Table>
@@ -118,7 +115,7 @@ export const OperativesTable = ({
                 square
                 danger
               />
-              <Button
+              {/* <Button
                 icon={faTrashAlt}
                 title="Remove operative"
                 onClick={() => removeOperative(teamIndex, opIndex)}
@@ -126,11 +123,11 @@ export const OperativesTable = ({
                 small
                 square
                 danger
-              />
+              /> */}
             </td>
           </tr>
         ))}
-        <tr>
+        {/* <tr>
           <td colSpan={4}>
             <Button
               label="Add operative"
@@ -138,13 +135,13 @@ export const OperativesTable = ({
               onClick={() => addOperative(teamIndex)}
             />
           </td>
-        </tr>
+        </tr> */}
       </tbody>
     </Table>
   );
 };
 
-const ACTIONS_WIDTH = 140;
+const ACTIONS_WIDTH = 100;
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -168,7 +165,7 @@ const Table = styled.table`
   }
 
   tbody {
-    tr:not(:last-child) {
+    tr {
       td {
         border: 1px solid ${({ theme }) => theme.colors.accent2};
 
@@ -188,14 +185,14 @@ const Table = styled.table`
       }
     }
 
-    tr:last-child {
+    /* tr:last-child {
       text-align: center;
 
       td {
         height: auto;
         padding-top: ${({ theme }) => theme.sizes.md};
       }
-    }
+    } */
   }
 `;
 

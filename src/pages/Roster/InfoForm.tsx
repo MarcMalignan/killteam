@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useMemo } from "react";
-import { compendium } from "../../compendium";
+import { compendium } from "../../data";
 import { Field, Select } from "../../components/Form";
 import { Section, SubTitle } from "../../components/Page";
 import { Faction, Roster } from "../../types";
@@ -8,7 +8,7 @@ import { EMPTY_ROSTER } from "./data";
 
 interface InfoFormProps {
   compendiumFaction?: Faction;
-  editRoster: (field: keyof Roster, value: any) => void;
+  editRoster: (values: Partial<Roster>) => void;
   roster: Roster;
   setCompendiumFaction: (compendiumFaction: Faction) => void;
   setRoster: (roster: Roster) => void;
@@ -37,7 +37,7 @@ export const InfoForm = ({
     ) {
       setRoster({ ...EMPTY_ROSTER, faction });
     } else {
-      editRoster("faction", faction);
+      editRoster({ faction });
     }
 
     setCompendiumFaction(findFaction(faction));
@@ -49,15 +49,13 @@ export const InfoForm = ({
       <Field id="faction" label="Faction:">
         <Select id="faction" value={roster.faction} onChange={onFactionChange}>
           <option value=""></option>
-          {compendium.armies.map((army) => (
-            <optgroup key={army.name} label={army.name}>
-              {army.factions.map((faction) => (
-                <option key={faction.name} value={faction.name}>
-                  {faction.name}
-                </option>
-              ))}
-            </optgroup>
-          ))}
+          {compendium.armies.map((army) =>
+            army.factions.map((faction) => (
+              <option key={faction.name} value={faction.name}>
+                {army.name} - {faction.name}
+              </option>
+            ))
+          )}
         </Select>
       </Field>
       {factionHasKeywords && (
@@ -65,7 +63,7 @@ export const InfoForm = ({
           <Select
             id="keyword"
             value={roster.keyword}
-            onChange={(e) => editRoster("keyword", e.currentTarget.value)}
+            onChange={(e) => editRoster({ keyword: e.currentTarget.value })}
           >
             <option value=""></option>
             {compendiumFaction?.selectableKeywords?.map((keyword) => (

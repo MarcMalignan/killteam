@@ -1,6 +1,16 @@
+type Archetype = "Infiltration" | "Recon" | "Security" | "Seek and destroy";
+
+export type CompendiumFireTeam = {
+  name: string;
+  archetypes: Archetype[];
+  nbOperatives?: number;
+};
+
 export type Faction = {
   name: string;
   selectableKeywords?: string[];
+  fireTeams?: CompendiumFireTeam[];
+  maxTeams?: number;
 };
 
 export type Army = {

@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { DEFAULT_NB_OPERATIVES } from "../../data";
 import { FireTeam, Operative, Roster } from "../../types";
 
 export const generateOperative = (): Operative => ({
@@ -7,16 +8,18 @@ export const generateOperative = (): Operative => ({
   notes: "",
 });
 
-export const generateTeam = (): FireTeam => ({
+export const generateTeam = (nbOps = DEFAULT_NB_OPERATIVES): FireTeam => ({
   id: uuid(),
   name: "",
   archetype: "",
-  operatives: Array(5).fill(null).map(generateOperative),
+  operatives: Array(nbOps).fill(null).map(generateOperative),
 });
 
 export const EMPTY_ROSTER: Roster = {
   faction: "",
   keyword: "",
   notes: "",
-  teams: Array(1).fill(null).map(generateTeam),
+  teams: Array(1)
+    .fill(null)
+    .map(() => generateTeam()),
 };

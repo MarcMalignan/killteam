@@ -1,4 +1,4 @@
-import { compendium } from "./compendium";
+import { compendium } from "./data";
 import { Faction } from "./types";
 
 export const findFaction = (factionName: string): Faction | undefined => {

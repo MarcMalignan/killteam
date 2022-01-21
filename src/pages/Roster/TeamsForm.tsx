@@ -4,30 +4,38 @@ import {
   faPlus,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { Fragment } from "react";
+import React, { ChangeEvent, Fragment } from "react";
+import { DEFAULT_NB_OPERATIVES } from "../../data";
 import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
-import { Field, Input } from "../../components/Form";
+import { Field, Input, Select } from "../../components/Form";
 import { Section, Separator, SubTitle } from "../../components/Page";
-import { FireTeam, Roster } from "../../types";
-import { generateTeam } from "./data";
+import { Faction, FireTeam, Roster } from "../../types";
+import { generateOperative, generateTeam } from "./data";
 import { OperativesTable } from "./OperativesTable";
 
 interface TeamsFormProps {
-  editRoster: (field: keyof Roster, value: any) => void;
+  compendiumFaction: Faction;
+  editRoster: (values: Partial<Roster>) => void;
+  keyword: string;
   teams: FireTeam[];
 }
 
-export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
-  const editTeam = (teamIndex: number, field: keyof FireTeam, value: any) => {
+export const TeamsForm = ({
+  compendiumFaction,
+  editRoster,
+  keyword,
+  teams,
+}: TeamsFormProps) => {
+  const editTeam = (teamIndex: number, values: Partial<FireTeam>) => {
     const newTeams = [...teams];
-    newTeams[teamIndex] = { ...newTeams[teamIndex], [field]: value };
-    editRoster("teams", newTeams);
+    newTeams[teamIndex] = { ...newTeams[teamIndex], ...values };
+    editRoster({ teams: newTeams });
   };
 
   const addTeam = () => {
     const newTeams = [...teams, generateTeam()];
-    editRoster("teams", newTeams);
+    editRoster({ teams: newTeams });
   };
 
   const moveTeamUp = (teamIndex: number) => {
@@ -35,7 +43,7 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
     const source = newTeams[teamIndex];
     newTeams.splice(teamIndex - 1, 0, { ...source });
     newTeams.splice(teamIndex + 1, 1);
-    editRoster("teams", newTeams);
+    editRoster({ teams: newTeams });
   };
 
   const moveTeamDown = (teamIndex: number) => {
@@ -43,14 +51,30 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
     const source = newTeams[teamIndex];
     newTeams.splice(teamIndex + 2, 0, { ...source });
     newTeams.splice(teamIndex, 1);
-    editRoster("teams", newTeams);
+    editRoster({ teams: newTeams });
   };
 
   const removeTeam = (teamIndex: number) => {
     const newTeams = [...teams];
     newTeams.splice(teamIndex, 1);
-    editRoster("teams", newTeams);
+    editRoster({ teams: newTeams });
   };
+
+  const onSelectFireTeam =
+    (teamIndex: number) => (event: ChangeEvent<HTMLSelectElement>) => {
+      const newTeam = event.currentTarget.value;
+      const teamData = compendiumFaction.fireTeams.find(
+        (t) => t.name === newTeam
+      );
+
+      editTeam(teamIndex, {
+        name: newTeam,
+        archetype: teamData.archetypes.join(" / "),
+        operatives: Array(teamData.nbOperatives || DEFAULT_NB_OPERATIVES)
+          .fill(null)
+          .map(generateOperative),
+      });
+    };
 
   return (
     <>
@@ -86,51 +110,65 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
               </RowContainer>
             </SubTitle>
             <Field id={`fireTeam${teamIndex + 1}_name`} label="Name:" small>
-              <Input
+              <Select
                 id={`fireTeam${teamIndex + 1}_name`}
-                type="text"
                 value={team.name}
-                onChange={(e) =>
-                  editTeam(teamIndex, "name", e.currentTarget.value)
-                }
-              />
+                onChange={onSelectFireTeam(teamIndex)}
+              >
+                <option value=""></option>
+                {compendiumFaction.fireTeams &&
+                  compendiumFaction.fireTeams.map((ft) => (
+                    <option key={ft.name} value={ft.name}>
+                      {ft.name}
+                    </option>
+                  ))}
+              </Select>
             </Field>
-            <Field
-              id={`fireTeam${teamIndex + 1}_archetype`}
-              label="Archetype:"
-              small
-            >
-              <Input
-                id={`fireTeam${teamIndex + 1}_archetype`}
-                type="text"
-                value={team.archetype}
-                onChange={(e) =>
-                  editTeam(teamIndex, "archetype", e.currentTarget.value)
-                }
-              />
-            </Field>
-            <OperativesTable
-              editTeam={editTeam}
-              operatives={team.operatives}
-              teamIndex={teamIndex}
-            />
+            {team.name && (
+              <>
+                <Field
+                  id={`fireTeam${teamIndex + 1}_archetype`}
+                  label="Archetype:"
+                  small
+                >
+                  <Input
+                    id={`fireTeam${teamIndex + 1}_archetype`}
+                    type="text"
+                    value={team.archetype}
+                    readOnly
+                  />
+                </Field>
+                <OperativesTable
+                  editTeam={editTeam}
+                  operatives={team.operatives}
+                  teamIndex={teamIndex}
+                />
+              </>
+            )}
           </Section>
+          {teamIndex < teams.length - 1 && <Separator />}
         </Fragment>
       ))}
-      {teams.length < 2 && (
-        <>
-          <Separator />
-          <Section>
-            <RowContainer>
-              <div></div>
-              <div>
-                <Button label="Add fire team" icon={faPlus} onClick={addTeam} />
-              </div>
-              <div></div>
-            </RowContainer>
-          </Section>
-        </>
-      )}
+      {(!compendiumFaction.maxTeams ||
+        compendiumFaction.maxTeams > teams.length) &&
+        teams.length < 2 && (
+          <>
+            <Separator />
+            <Section>
+              <RowContainer>
+                <div></div>
+                <div>
+                  <Button
+                    label="Add fire team"
+                    icon={faPlus}
+                    onClick={addTeam}
+                  />
+                </div>
+                <div></div>
+              </RowContainer>
+            </Section>
+          </>
+        )}
     </>
   );
 };

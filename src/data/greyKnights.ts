@@ -5,6 +5,13 @@ export const greyKnights: Army = {
   factions: [
     {
       name: "Grey Knight",
+      fireTeams: [
+        {
+          name: "Grey Knight",
+          archetypes: ["Seek and destroy", "Security"],
+        },
+      ],
+      maxTeams: 1,
     },
   ],
 };
