@@ -1,3 +1,17 @@
+export type Faction = {
+  name: string;
+  selectableKeywords?: string[];
+};
+
+export type Army = {
+  name: string;
+  factions: Faction[];
+};
+
+export type Compendium = {
+  armies: Army[];
+};
+
 export type Operative = {
   id: string;
   name: string;

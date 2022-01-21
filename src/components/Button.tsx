@@ -58,7 +58,7 @@ const ButtonContainer = styled.button<ButtonContainerProps>`
   }
 
   &:hover:not(:disabled),
-  &:focus:not(:disabled) {
+  &:focus {
     background: ${({ danger, theme }) =>
       danger ? theme.colors.accent : theme.colors.accent2};
     border-color: ${({ danger, theme }) =>

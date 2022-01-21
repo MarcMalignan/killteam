@@ -48,6 +48,10 @@ export const Input = styled.input`
   &:focus {
     border-color: ${({ theme }) => theme.colors.accent};
   }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 export const Textarea = styled.textarea`
@@ -63,5 +67,27 @@ export const Textarea = styled.textarea`
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.accent};
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+export const Select = styled.select`
+  flex-grow: 1;
+  height: ${FIELD_HEIGHT}px;
+  padding: ${({ theme }) => `${theme.sizes.xs} ${theme.sizes.sm}`};
+  background: #fff;
+  border: 1px solid ${({ theme }) => theme.colors.accent2};
+  outline: none;
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.accent};
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;
