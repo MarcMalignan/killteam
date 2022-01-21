@@ -26,7 +26,6 @@ export type FireTeam = {
 };
 
 export type Roster = {
-  name: string;
   faction: string;
   keyword: string;
   notes: string;

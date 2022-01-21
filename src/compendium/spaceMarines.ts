@@ -1,7 +1,7 @@
 import { Army } from "../types";
 
 export const spaceMarines: Army = {
-  name: "Space Marine",
+  name: "Space Marines",
   factions: [
     {
       name: "Space Marine",

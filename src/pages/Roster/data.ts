@@ -15,7 +15,6 @@ export const generateTeam = (): FireTeam => ({
 });
 
 export const EMPTY_ROSTER: Roster = {
-  name: "",
   faction: "",
   keyword: "",
   notes: "",
