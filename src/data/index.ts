@@ -10,6 +10,7 @@ import { deathGuard } from "./deathGuard";
 import { drukhari } from "./drukhari";
 import { genestealerCults } from "./genestealerCults";
 import { greyKnights } from "./greyKnights";
+import { harlequins } from "./harlequins";
 import { necrons } from "./necrons";
 import { orks } from "./orks";
 import { spaceMarines } from "./spaceMarines";
@@ -32,6 +33,7 @@ export const compendium: Compendium = {
     drukhari,
     genestealerCults,
     greyKnights,
+    harlequins,
     necrons,
     orks,
     spaceMarines,
