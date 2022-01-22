@@ -1,9 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { RowContainer } from "./commons";
-
-const logo = require("../img/logo.png");
+import { Logo, RowContainer } from "./commons";
 
 export const Header = () => {
   return (
@@ -11,7 +9,7 @@ export const Header = () => {
       <RowContainer>
         <div></div>
         <Link to="/">
-          <HeaderLogo src={logo.default} alt="Kill Team" />
+          <Logo />
         </Link>
         <HeaderNav>
           <StyledNavLink to="/">Home</StyledNavLink>
@@ -27,10 +25,6 @@ const HeaderContainer = styled.header`
   padding: ${({ theme }) => `${theme.sizes.sm} ${theme.sizes.md}`};
   background: ${({ theme }) => theme.colors.bg3};
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
-`;
-
-const HeaderLogo = styled.img`
-  height: 60px;
 `;
 
 const HeaderNav = styled.nav`

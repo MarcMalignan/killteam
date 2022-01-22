@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { AppContext } from "./AppContext";
-import { Header } from "./components/Header";
-import { Home } from "./pages/Home";
 import { Roster } from "./pages/Roster";
 
 export const Content = () => {
@@ -11,11 +9,11 @@ export const Content = () => {
 
   return (
     <MainContainer>
-      <Header />
+      {/* <Header /> */}
       <ContentContainer background={background}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/roster" element={<Roster />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Roster />} />
         </Routes>
       </ContentContainer>
     </MainContainer>

@@ -2,7 +2,7 @@ import { faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../AppContext";
 import { Button } from "../../components/Button";
-import { RowContainer } from "../../components/commons";
+import { Logo, RowContainer } from "../../components/commons";
 import { Field, Textarea } from "../../components/Form";
 import {
   Page,
@@ -60,8 +60,10 @@ export const Roster = () => {
       <Section>
         <Title>
           <RowContainer>
-            <div></div>
-            <div>- Kill Team Roster -</div>
+            <div>
+              <Logo />
+            </div>
+            <div>Kill Team Roster</div>
             <div>
               <Button
                 label="Load"
