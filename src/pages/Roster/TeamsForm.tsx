@@ -4,29 +4,25 @@ import {
   faPlus,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { ChangeEvent, Fragment } from "react";
-import { DEFAULT_NB_OPERATIVES } from "../../data";
+import React, { ChangeEvent, Fragment, useContext } from "react";
+import { AppContext } from "../../AppContext";
 import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
 import { Field, Input, Select } from "../../components/Form";
 import { Section, Separator, SubTitle } from "../../components/Page";
-import { Faction, FireTeam, Roster } from "../../types";
+import { DEFAULT_NB_OPERATIVES } from "../../data";
+import { FireTeam, Roster } from "../../types";
 import { generateOperative, generateTeam } from "./data";
 import { OperativesTable } from "./OperativesTable";
 
 interface TeamsFormProps {
-  compendiumFaction: Faction;
   editRoster: (values: Partial<Roster>) => void;
-  keyword: string;
   teams: FireTeam[];
 }
 
-export const TeamsForm = ({
-  compendiumFaction,
-  editRoster,
-  keyword,
-  teams,
-}: TeamsFormProps) => {
+export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
+  const { faction } = useContext(AppContext);
+
   const editTeam = (teamIndex: number, values: Partial<FireTeam>) => {
     const newTeams = [...teams];
     newTeams[teamIndex] = { ...newTeams[teamIndex], ...values };
@@ -63,9 +59,7 @@ export const TeamsForm = ({
   const onSelectFireTeam =
     (teamIndex: number) => (event: ChangeEvent<HTMLSelectElement>) => {
       const newTeam = event.currentTarget.value;
-      const teamData = compendiumFaction.fireTeams.find(
-        (t) => t.name === newTeam
-      );
+      const teamData = faction.fireTeams.find((t) => t.name === newTeam);
 
       editTeam(teamIndex, {
         name: newTeam,
@@ -116,8 +110,8 @@ export const TeamsForm = ({
                 onChange={onSelectFireTeam(teamIndex)}
               >
                 <option value=""></option>
-                {compendiumFaction.fireTeams &&
-                  compendiumFaction.fireTeams.map((ft) => (
+                {faction.fireTeams &&
+                  faction.fireTeams.map((ft) => (
                     <option key={ft.name} value={ft.name}>
                       {ft.name}
                     </option>
@@ -149,8 +143,7 @@ export const TeamsForm = ({
           {teamIndex < teams.length - 1 && <Separator />}
         </Fragment>
       ))}
-      {(!compendiumFaction.maxTeams ||
-        compendiumFaction.maxTeams > teams.length) &&
+      {(!faction.maxTeams || faction.maxTeams > teams.length) &&
         teams.length < 2 && (
           <>
             <Separator />

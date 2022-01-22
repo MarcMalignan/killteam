@@ -1,33 +1,27 @@
-import React, { ChangeEvent, useMemo } from "react";
-import { compendium } from "../../data";
+import React, { ChangeEvent, useContext, useMemo } from "react";
+import { AppContext } from "../../AppContext";
 import { Field, Select } from "../../components/Form";
 import { Section, SubTitle } from "../../components/Page";
-import { Faction, Roster } from "../../types";
-import { findFaction } from "../../utils";
+import { compendium } from "../../data";
+import { Roster } from "../../types";
+import { findArmy, findFaction } from "../../utils";
 import { EMPTY_ROSTER } from "./data";
 
 interface InfoFormProps {
-  compendiumFaction?: Faction;
   editRoster: (values: Partial<Roster>) => void;
   roster: Roster;
-  setCompendiumFaction: (compendiumFaction: Faction) => void;
-  setRoster: (roster: Roster) => void;
 }
 
-export const InfoForm = ({
-  compendiumFaction,
-  editRoster,
-  roster,
-  setCompendiumFaction,
-  setRoster,
-}: InfoFormProps) => {
+export const InfoForm = ({ editRoster, roster }: InfoFormProps) => {
+  const { faction, setFaction, setArmyBackground } = useContext(AppContext);
+
   const factionHasKeywords = useMemo(
-    () => !!compendiumFaction?.selectableKeywords?.length,
-    [compendiumFaction]
+    () => !!faction?.selectableKeywords?.length,
+    [faction]
   );
 
   const onFactionChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const faction = event.currentTarget.value;
+    const factionName = event.currentTarget.value;
 
     if (
       roster.faction &&
@@ -35,12 +29,15 @@ export const InfoForm = ({
         "Do you really want to change the faction?\n(this will reset all your roster data)"
       )
     ) {
-      setRoster({ ...EMPTY_ROSTER, faction });
+      editRoster({ ...EMPTY_ROSTER, faction: factionName });
     } else {
-      editRoster({ faction });
+      editRoster({ faction: factionName });
     }
 
-    setCompendiumFaction(findFaction(faction));
+    setFaction(findFaction(factionName));
+
+    const army = findArmy(factionName);
+    setArmyBackground(army);
   };
 
   return (
@@ -66,7 +63,7 @@ export const InfoForm = ({
             onChange={(e) => editRoster({ keyword: e.currentTarget.value })}
           >
             <option value=""></option>
-            {compendiumFaction?.selectableKeywords?.map((keyword) => (
+            {faction?.selectableKeywords?.map((keyword) => (
               <option key={keyword} value={keyword}>
                 {keyword}
               </option>

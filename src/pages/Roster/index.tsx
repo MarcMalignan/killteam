@@ -1,5 +1,6 @@
 import { faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../AppContext";
 import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
 import { Field, Textarea } from "../../components/Form";
@@ -10,15 +11,16 @@ import {
   SubTitle,
   Title,
 } from "../../components/Page";
-import { Faction, Roster as RosterType } from "../../types";
-import { findFaction } from "../../utils";
+import { Roster as RosterType } from "../../types";
+import { findArmy, findFaction } from "../../utils";
 import { EMPTY_ROSTER } from "./data";
 import { InfoForm } from "./InfoForm";
 import { TeamsForm } from "./TeamsForm";
 
 export const Roster = () => {
+  const { faction, setFaction, setArmyBackground, resetBackground } =
+    useContext(AppContext);
   const [roster, setRoster] = useState(EMPTY_ROSTER);
-  const [compendiumFaction, setCompendiumFaction] = useState<Faction>();
 
   // TODO: implement save
   const save = () => {
@@ -37,15 +39,21 @@ export const Roster = () => {
       return alert("ERROR - Loading data");
     }
 
+    const armyData = findArmy(data.faction);
     const factionData = findFaction(data.faction);
-    if (!factionData) return alert("ERROR - Kill Team not found");
+    if (!armyData || !factionData) return alert("ERROR - Kill Team not found");
 
     setRoster(data);
-    setCompendiumFaction(factionData);
+    setFaction(factionData);
+    setArmyBackground(armyData);
   };
 
   const editRoster = (values: Partial<RosterType>) =>
     setRoster({ ...roster, ...values });
+
+  useEffect(() => {
+    return () => resetBackground();
+  }, []);
 
   return (
     <Page>
@@ -74,24 +82,13 @@ export const Roster = () => {
 
       <Separator />
 
-      <InfoForm
-        compendiumFaction={compendiumFaction}
-        roster={roster}
-        editRoster={editRoster}
-        setCompendiumFaction={setCompendiumFaction}
-        setRoster={setRoster}
-      />
+      <InfoForm roster={roster} editRoster={editRoster} />
 
       <Separator />
 
-      {compendiumFaction && (
+      {faction && (
         <>
-          <TeamsForm
-            compendiumFaction={compendiumFaction}
-            editRoster={editRoster}
-            keyword={roster.keyword}
-            teams={roster.teams}
-          />
+          <TeamsForm editRoster={editRoster} teams={roster.teams} />
           <Separator />
           <Section>
             <SubTitle>Notes</SubTitle>
