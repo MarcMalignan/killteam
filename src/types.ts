@@ -1,9 +1,15 @@
 type Archetype = "Infiltration" | "Recon" | "Security" | "Seek and destroy";
 
+export type CompendiumOperative = {
+  name: string;
+  leader?: boolean;
+};
+
 export type CompendiumFireTeam = {
   name: string;
   archetypes: Archetype[];
   nbOperatives?: number;
+  operatives?: CompendiumOperative[];
 };
 
 export type Faction = {

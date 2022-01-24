@@ -9,6 +9,11 @@ export const harlequins: Army = {
         {
           name: "Troupe",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
+          operatives: [
+            { name: "Player Leader", leader: true },
+            { name: "Player Warrior" },
+            { name: "Player Gunner" },
+          ],
           nbOperatives: 8,
         },
       ],

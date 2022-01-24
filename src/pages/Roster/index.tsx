@@ -83,10 +83,10 @@ export const Roster = () => {
   const editRoster = (values: Partial<RosterType>) =>
     setRoster({ ...roster, ...values });
 
-  const addTeam = () => {
-    const newTeams = [...roster.teams, generateTeam()];
-    editRoster({ teams: newTeams });
-  };
+  // const addTeam = () => {
+  //   const newTeams = [...roster.teams, generateTeam()];
+  //   editRoster({ teams: newTeams });
+  // };
 
   useEffect(() => {
     return () => resetBackground();

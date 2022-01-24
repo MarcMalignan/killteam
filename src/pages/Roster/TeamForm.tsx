@@ -3,14 +3,14 @@ import {
   faArrowUp,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { ChangeEvent, useContext } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../AppContext";
 import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
 import { Field, Input, Select } from "../../components/Form";
 import { Section, SubTitle } from "../../components/Page";
 import { DEFAULT_NB_OPERATIVES } from "../../data";
-import { FireTeam, Roster } from "../../types";
+import { CompendiumFireTeam, FireTeam, Roster } from "../../types";
 import { generateOperative } from "./data";
 import { OperativesTable } from "./OperativesTable";
 
@@ -28,6 +28,7 @@ export const TeamForm = ({
   teams,
 }: TeamFormProps) => {
   const { faction } = useContext(AppContext);
+  const [fireTeam, setFireTeam] = useState<CompendiumFireTeam>();
 
   const editTeam = (teamIndex: number, values: Partial<FireTeam>) => {
     const newTeams = [...teams];
@@ -62,6 +63,8 @@ export const TeamForm = ({
       const newTeam = event.currentTarget.value;
       const teamData = faction.fireTeams.find((t) => t.name === newTeam);
 
+      setFireTeam(teamData);
+
       editTeam(teamIndex, {
         name: newTeam,
         archetype: teamData.archetypes.join(" / "),
@@ -70,6 +73,11 @@ export const TeamForm = ({
           .map(generateOperative),
       });
     };
+
+  useEffect(() => {
+    const teamData = faction.fireTeams.find((t) => t.name === team.name);
+    setFireTeam(teamData);
+  }, [faction]);
 
   return (
     <Section>
@@ -146,6 +154,7 @@ export const TeamForm = ({
           </Field>
           <OperativesTable
             editTeam={editTeam}
+            fireTeam={fireTeam}
             operatives={team.operatives}
             teamIndex={teamIndex}
           />
