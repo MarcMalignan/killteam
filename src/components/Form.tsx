@@ -8,12 +8,13 @@ interface FieldContainerProps {
 }
 
 type FieldProps = {
+  className?: string;
   id?: string;
   label?: string;
 } & FieldContainerProps;
 
-export const Field: FC<FieldProps> = ({ children, id, label }) => (
-  <FieldContainer>
+export const Field: FC<FieldProps> = ({ children, className, id, label }) => (
+  <FieldContainer className={className}>
     {label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
     {children}
   </FieldContainer>

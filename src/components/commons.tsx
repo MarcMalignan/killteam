@@ -27,3 +27,7 @@ export const RowContainer = styled.div`
     }
   }
 `;
+
+export const NoWrap = styled.span`
+  white-space: nowrap;
+`;

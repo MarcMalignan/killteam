@@ -9,7 +9,7 @@ import React, {
 import { saveAs } from "file-saver";
 import { AppContext } from "../../AppContext";
 import { Button } from "../../components/Button";
-import { Logo, RowContainer } from "../../components/commons";
+import { Logo, NoWrap, RowContainer } from "../../components/commons";
 import { Field, Textarea } from "../../components/Form";
 import {
   Page,
@@ -94,33 +94,43 @@ export const Roster = () => {
             <div>
               <Logo />
             </div>
-            <div>Kill Team Roster</div>
             <div>
-              <Button
-                label="Load"
-                icon={faUpload}
-                title="Upload roster"
-                onClick={loadInputClick}
-              />
-              <LoadInput
-                ref={loadInputRef}
-                type="file"
-                onChange={loadInputChange}
-              />
-              <Button
-                label="Save"
-                icon={faSave}
-                title="Save roster"
-                onClick={save}
-              />
+              <span className="no-print">Kill Team Roster</span>
+              <span className="print-only">
+                <NoWrap>{roster.faction}</NoWrap> <NoWrap>Kill Team</NoWrap>
+              </span>
+            </div>
+            <div>
+              <div className="no-print">
+                <Button
+                  label="Load"
+                  icon={faUpload}
+                  title="Upload roster"
+                  onClick={loadInputClick}
+                />
+                <LoadInput
+                  ref={loadInputRef}
+                  type="file"
+                  onChange={loadInputChange}
+                />
+                <Button
+                  label="Save"
+                  icon={faSave}
+                  title="Save roster"
+                  onClick={save}
+                />
+              </div>
+              <i className="print-only">
+                {roster.keyword && `#${roster.keyword}`}
+              </i>
             </div>
           </RowContainer>
         </Title>
       </Section>
 
-      <Separator />
+      <Separator className="no-print" />
 
-      <InfoForm roster={roster} editRoster={editRoster} />
+      <InfoForm className="no-print" roster={roster} editRoster={editRoster} />
 
       <Separator />
 
@@ -144,6 +154,6 @@ export const Roster = () => {
   );
 };
 
-export const LoadInput = styled.input`
+const LoadInput = styled.input`
   display: none;
 `;

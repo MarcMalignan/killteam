@@ -24,14 +24,22 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+
+  @media print {
+    height: 100%;
+  }
 `;
 
 const ContentContainer = styled.main<{ background: string }>`
   flex-grow: 1;
-  background: red;
-  overflow: hidden;
-  background: url(${({ background }) => background});
+  background: url(${({ background }) => background}) #000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
+
+  @media print {
+    background: none;
+    overflow: visible;
+  }
 `;

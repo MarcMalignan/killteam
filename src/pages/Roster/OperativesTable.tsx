@@ -89,7 +89,7 @@ export const OperativesTable = ({
                 onChange={editOperative(teamIndex, opIndex, "notes")}
               />
             </td>
-            <td>
+            <td className="no-print">
               <Button
                 icon={faArrowUp}
                 title="Move operative up"
@@ -176,7 +176,7 @@ const Table = styled.table`
           color: ${({ theme }) => theme.colors.text2};
           font-size: 0.7rem;
         }
-        &:last-child {
+        &:nth-child(4) {
           width: ${ACTIONS_WIDTH}px;
           text-align: right;
           border: none;

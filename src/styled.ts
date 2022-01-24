@@ -47,10 +47,27 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.text};
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.text};
+
+    @media print {
+      background: none;
+    }
   }
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  .print-only {
+    display: none;
+  }
+
+  @media print {
+    .print-only {
+      display: initial;
+    }
+    .no-print {
+      display: none;
+    }
   }
 `;

@@ -1,14 +1,38 @@
+import React, { FC } from "react";
 import styled from "styled-components";
 
-export const Page = styled.div`
+export const Page: FC<{}> = ({ children }) => {
+  return (
+    <PageContainer>
+      <PageInner>{children}</PageInner>
+    </PageContainer>
+  );
+};
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 900px;
   height: 100%;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.sizes.xl} 0;
+  padding: ${({ theme }) => theme.sizes.md};
   background: ${({ theme }) => theme.colors.bg};
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
   overflow: auto;
+
+  @media print {
+    max-width: none;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+`;
+
+const PageInner = styled.div`
+  flex-grow: 1;
+  padding: ${({ theme }) => theme.sizes.xl} 0;
+  border: 4px double ${({ theme }) => theme.colors.bg2};
 `;
 
 export const Title = styled.h1`
@@ -18,6 +42,11 @@ export const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.header};
   font-size: ${({ theme }) => theme.fontSizes.xl};
   color: ${({ theme }) => theme.colors.accent};
+
+  i {
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    color: ${({ theme }) => theme.colors.accent2};
+  }
 `;
 
 export const SubTitle = styled.h2`
@@ -26,6 +55,10 @@ export const SubTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.header};
   font-size: ${({ theme }) => theme.fontSizes.lg};
   color: ${({ theme }) => theme.colors.accent};
+
+  i {
+    color: ${({ theme }) => theme.colors.accent2};
+  }
 `;
 
 export const Section = styled.section`

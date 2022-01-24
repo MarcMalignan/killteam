@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useContext, useMemo } from "react";
 import { AppContext } from "../../AppContext";
-import { Field, Select } from "../../components/Form";
+import { Field, Input, Select } from "../../components/Form";
 import { Section, SubTitle } from "../../components/Page";
 import { compendium } from "../../data";
 import { Roster } from "../../types";
@@ -8,11 +8,12 @@ import { findArmy, findFaction } from "../../utils";
 import { EMPTY_ROSTER } from "./data";
 
 interface InfoFormProps {
+  className?: string;
   editRoster: (values: Partial<Roster>) => void;
   roster: Roster;
 }
 
-export const InfoForm = ({ editRoster, roster }: InfoFormProps) => {
+export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
   const { faction, setFaction, setArmyBackground } = useContext(AppContext);
 
   const factionHasKeywords = useMemo(
@@ -41,7 +42,7 @@ export const InfoForm = ({ editRoster, roster }: InfoFormProps) => {
   };
 
   return (
-    <Section>
+    <Section className={className}>
       <SubTitle>Roster Information</SubTitle>
       <Field id="faction" label="Faction:">
         <Select id="faction" value={roster.faction} onChange={onFactionChange}>

@@ -77,33 +77,46 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
           <Section>
             <SubTitle>
               <RowContainer>
-                <div>Fire Team #{teamIndex + 1}</div>
                 <div>
-                  <Button
-                    icon={faArrowUp}
-                    title="Move team up"
-                    onClick={() => moveTeamUp(teamIndex)}
-                    disabled={teamIndex === 0}
-                    square
-                  />
-                  <Button
-                    icon={faArrowDown}
-                    title="Move team down"
-                    onClick={() => moveTeamDown(teamIndex)}
-                    disabled={teamIndex === teams.length - 1}
-                    square
-                  />
-                  <Button
-                    label="Remove fire team"
-                    icon={faTrashAlt}
-                    onClick={() => removeTeam(teamIndex)}
-                    disabled={teams.length < 2}
-                    danger
-                  />
+                  <span className="no-print">Fire Team #{teamIndex + 1}</span>
+                  <span className="print-only">
+                    #{teamIndex + 1} - {team.name} Fire Team
+                  </span>
+                </div>
+                <div>
+                  <div className="no-print">
+                    <Button
+                      icon={faArrowUp}
+                      title="Move team up"
+                      onClick={() => moveTeamUp(teamIndex)}
+                      disabled={teamIndex === 0}
+                      square
+                    />
+                    <Button
+                      icon={faArrowDown}
+                      title="Move team down"
+                      onClick={() => moveTeamDown(teamIndex)}
+                      disabled={teamIndex === teams.length - 1}
+                      square
+                    />
+                    <Button
+                      label="Remove fire team"
+                      icon={faTrashAlt}
+                      onClick={() => removeTeam(teamIndex)}
+                      disabled={teams.length < 2}
+                      danger
+                    />
+                  </div>
+                  <i className="print-only">{team.archetype}</i>
                 </div>
               </RowContainer>
             </SubTitle>
-            <Field id={`fireTeam${teamIndex + 1}_name`} label="Name:" small>
+            <Field
+              id={`fireTeam${teamIndex + 1}_name`}
+              className="no-print"
+              label="Name:"
+              small
+            >
               <Select
                 id={`fireTeam${teamIndex + 1}_name`}
                 value={team.name}
@@ -122,6 +135,7 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
               <>
                 <Field
                   id={`fireTeam${teamIndex + 1}_archetype`}
+                  className="no-print"
                   label="Archetype:"
                   small
                 >
@@ -146,8 +160,8 @@ export const TeamsForm = ({ editRoster, teams }: TeamsFormProps) => {
       {(!faction.maxTeams || faction.maxTeams > teams.length) &&
         teams.length < 2 && (
           <>
-            <Separator />
-            <Section>
+            <Separator className="no-print" />
+            <Section className="no-print">
               <RowContainer>
                 <div></div>
                 <div>
