@@ -1,12 +1,14 @@
-import { faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { saveAs } from "file-saver";
 import React, {
   ChangeEvent,
+  Fragment,
   useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { saveAs } from "file-saver";
+import styled from "styled-components";
 import { AppContext } from "../../AppContext";
 import { Button } from "../../components/Button";
 import { Logo, NoWrap, RowContainer } from "../../components/commons";
@@ -20,10 +22,9 @@ import {
 } from "../../components/Page";
 import { Roster as RosterType } from "../../types";
 import { findArmy, findFaction } from "../../utils";
-import { EMPTY_ROSTER } from "./data";
+import { EMPTY_ROSTER, generateTeam } from "./data";
 import { InfoForm } from "./InfoForm";
-import { TeamsForm } from "./TeamsForm";
-import styled from "styled-components";
+import { TeamForm } from "./TeamForm";
 
 export const Roster = () => {
   const { faction, setFaction, setArmyBackground, resetBackground } =
@@ -82,6 +83,11 @@ export const Roster = () => {
   const editRoster = (values: Partial<RosterType>) =>
     setRoster({ ...roster, ...values });
 
+  const addTeam = () => {
+    const newTeams = [...roster.teams, generateTeam()];
+    editRoster({ teams: newTeams });
+  };
+
   useEffect(() => {
     return () => resetBackground();
   }, []);
@@ -136,7 +142,36 @@ export const Roster = () => {
 
       {faction && (
         <>
-          <TeamsForm editRoster={editRoster} teams={roster.teams} />
+          {roster.teams.map((team, teamIndex) => (
+            <Fragment key={team.id}>
+              <TeamForm
+                editRoster={editRoster}
+                team={team}
+                teamIndex={teamIndex}
+                teams={roster.teams}
+              />
+              {teamIndex < roster.teams.length - 1 && <Separator />}
+            </Fragment>
+          ))}
+          {(!faction.maxTeams || faction.maxTeams > roster.teams.length) &&
+            roster.teams.length < 2 && (
+              <>
+                <Separator className="no-print" />
+                <Section className="no-print">
+                  <RowContainer>
+                    <div></div>
+                    <div>
+                      <Button
+                        label="Add fire team"
+                        icon={faPlus}
+                        onClick={addTeam}
+                      />
+                    </div>
+                    <div></div>
+                  </RowContainer>
+                </Section>
+              </>
+            )}
           <Separator />
           <Section>
             <SubTitle>Notes</SubTitle>
