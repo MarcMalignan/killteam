@@ -11,7 +11,7 @@ export const greyKnights: Army = {
           archetypes: ["Seek and destroy", "Security"],
         },
       ],
-      maxTeams: 1,
+      nbTeams: 1,
     },
   ],
 };

@@ -51,11 +51,11 @@ export const TeamForm = ({
     editRoster({ teams: newTeams });
   };
 
-  const removeTeam = (teamIndex: number) => {
-    const newTeams = [...teams];
-    newTeams.splice(teamIndex, 1);
-    editRoster({ teams: newTeams });
-  };
+  // const removeTeam = (teamIndex: number) => {
+  //   const newTeams = [...teams];
+  //   newTeams.splice(teamIndex, 1);
+  //   editRoster({ teams: newTeams });
+  // };
 
   const onSelectFireTeam =
     (teamIndex: number) => (event: ChangeEvent<HTMLSelectElement>) => {
@@ -97,13 +97,13 @@ export const TeamForm = ({
                 disabled={teamIndex === teams.length - 1}
                 square
               />
-              <Button
+              {/* <Button
                 label="Remove fire team"
                 icon={faTrashAlt}
                 onClick={() => removeTeam(teamIndex)}
                 disabled={teams.length < 2}
                 danger
-              />
+              /> */}
             </div>
             <i className="print-only">{team.archetype}</i>
           </div>

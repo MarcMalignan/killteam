@@ -18,6 +18,7 @@ import { tauEmpire } from "./tauEmpire";
 import { thousandSons } from "./thousandSons";
 import { tyranids } from "./tyranids";
 
+export const DEFAULT_NB_TEAMS = 2;
 export const DEFAULT_NB_OPERATIVES = 5;
 
 export const compendium: Compendium = {

@@ -10,7 +10,7 @@ export type Faction = {
   name: string;
   selectableKeywords?: string[];
   fireTeams?: CompendiumFireTeam[];
-  maxTeams?: number;
+  nbTeams?: number;
 };
 
 export type Army = {

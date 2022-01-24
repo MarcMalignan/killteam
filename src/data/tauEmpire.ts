@@ -32,7 +32,7 @@ export const tauEmpire: Army = {
           nbOperatives: 13,
         },
       ],
-      maxTeams: 1,
+      nbTeams: 1,
     },
     // {
     //   name: "Pathfinder",

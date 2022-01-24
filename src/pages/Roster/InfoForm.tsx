@@ -5,7 +5,7 @@ import { Section, SubTitle } from "../../components/Page";
 import { compendium } from "../../data";
 import { Roster } from "../../types";
 import { findArmy, findFaction } from "../../utils";
-import { EMPTY_ROSTER } from "./data";
+import { generateRoster } from "./data";
 
 interface InfoFormProps {
   className?: string;
@@ -23,6 +23,7 @@ export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
 
   const onFactionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const factionName = event.currentTarget.value;
+    const faction = findFaction(factionName);
 
     if (
       roster.faction &&
@@ -30,7 +31,7 @@ export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
         "Do you really want to change the faction?\n(this will reset all your roster data)"
       )
     ) {
-      editRoster({ ...EMPTY_ROSTER, faction: factionName });
+      editRoster({ ...generateRoster(faction.nbTeams), faction: factionName });
     } else {
       editRoster({ faction: factionName });
     }

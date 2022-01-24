@@ -22,14 +22,14 @@ import {
 } from "../../components/Page";
 import { Roster as RosterType } from "../../types";
 import { findArmy, findFaction } from "../../utils";
-import { EMPTY_ROSTER, generateTeam } from "./data";
+import { generateRoster, generateTeam } from "./data";
 import { InfoForm } from "./InfoForm";
 import { TeamForm } from "./TeamForm";
 
 export const Roster = () => {
   const { faction, setFaction, setArmyBackground, resetBackground } =
     useContext(AppContext);
-  const [roster, setRoster] = useState(EMPTY_ROSTER);
+  const [roster, setRoster] = useState(generateRoster());
   const loadInputRef = useRef<HTMLInputElement>(null);
 
   const save = () => {
@@ -153,7 +153,7 @@ export const Roster = () => {
               {teamIndex < roster.teams.length - 1 && <Separator />}
             </Fragment>
           ))}
-          {(!faction.maxTeams || faction.maxTeams > roster.teams.length) &&
+          {/* {(!faction.nbTeams || faction.nbTeams > roster.teams.length) &&
             roster.teams.length < 2 && (
               <>
                 <Separator className="no-print" />
@@ -171,7 +171,7 @@ export const Roster = () => {
                   </RowContainer>
                 </Section>
               </>
-            )}
+            )} */}
           <Separator />
           <Section>
             <SubTitle>Notes</SubTitle>

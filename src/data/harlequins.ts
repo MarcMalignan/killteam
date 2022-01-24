@@ -12,7 +12,7 @@ export const harlequins: Army = {
           nbOperatives: 8,
         },
       ],
-      maxTeams: 1,
+      nbTeams: 1,
     },
   ],
 };
