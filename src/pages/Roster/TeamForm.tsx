@@ -1,9 +1,6 @@
-import {
-  faArrowDown,
-  faArrowUp,
-  faTrashAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { AppContext } from "../../AppContext";
 import { Button } from "../../components/Button";
 import { RowContainer } from "../../components/commons";
@@ -11,6 +8,7 @@ import { Field, Input, Select } from "../../components/Form";
 import { Section, SubTitle } from "../../components/Page";
 import { DEFAULT_NB_OPERATIVES } from "../../data";
 import { CompendiumFireTeam, FireTeam, Roster } from "../../types";
+import { getNameId } from "../../utils";
 import { generateOperative } from "./data";
 import { OperativesTable } from "./OperativesTable";
 
@@ -21,6 +19,8 @@ interface TeamFormProps {
   teams: FireTeam[];
 }
 
+const DEFAULT_FIRETEAM_IMG = require("../../img/favicon.png");
+
 export const TeamForm = ({
   editRoster,
   team,
@@ -29,6 +29,9 @@ export const TeamForm = ({
 }: TeamFormProps) => {
   const { faction } = useContext(AppContext);
   const [fireTeam, setFireTeam] = useState<CompendiumFireTeam>();
+  const [fireTeamImg, setFireTeamImg] = useState<string>(
+    DEFAULT_FIRETEAM_IMG.default
+  );
 
   const editTeam = (teamIndex: number, values: Partial<FireTeam>) => {
     const newTeams = [...teams];
@@ -79,71 +82,84 @@ export const TeamForm = ({
     setFireTeam(teamData);
   }, [faction]);
 
+  useEffect(() => {
+    if (fireTeam) {
+      const fireTeamId = getNameId(fireTeam.name);
+      try {
+        const img = require(`../../img/fireTeams/${fireTeamId}.png`);
+        setFireTeamImg(img.default);
+      } catch {
+        setFireTeamImg(DEFAULT_FIRETEAM_IMG.default);
+      }
+    }
+  }, [fireTeam]);
+
   return (
-    <Section>
-      <SubTitle>
-        <RowContainer>
-          <div>
-            <span className="no-print">Fire Team #{teamIndex + 1}</span>
-            <span className="print-only">
-              #{teamIndex + 1} - {team.name} Fire Team
-            </span>
-          </div>
-          <div>
-            <div className="no-print">
-              <Button
-                icon={faArrowUp}
-                title="Move team up"
-                onClick={() => moveTeamUp(teamIndex)}
-                disabled={teamIndex === 0}
-                square
-              />
-              <Button
-                icon={faArrowDown}
-                title="Move team down"
-                onClick={() => moveTeamDown(teamIndex)}
-                disabled={teamIndex === teams.length - 1}
-                square
-              />
-              {/* <Button
-                label="Remove fire team"
-                icon={faTrashAlt}
-                onClick={() => removeTeam(teamIndex)}
-                disabled={teams.length < 2}
-                danger
-              /> */}
-            </div>
+    <>
+      <TeamFormContainer>
+        <Section>
+          <TeamImg src={fireTeamImg ? fireTeamImg : undefined} />
+        </Section>
+        <TeamFormSection>
+          <SubTitle>
+            <RowContainer>
+              <div>
+                <span className="no-print">Fire Team #{teamIndex + 1}</span>
+                <span className="print-only">
+                  #{teamIndex + 1} - {team.name} Fire Team
+                </span>
+              </div>
+              <div>
+                <div className="no-print">
+                  <Button
+                    icon={faArrowUp}
+                    title="Move team up"
+                    onClick={() => moveTeamUp(teamIndex)}
+                    disabled={teamIndex === 0}
+                    square
+                  />
+                  <Button
+                    icon={faArrowDown}
+                    title="Move team down"
+                    onClick={() => moveTeamDown(teamIndex)}
+                    disabled={teamIndex === teams.length - 1}
+                    square
+                  />
+                  {/* <Button
+                    label="Remove fire team"
+                    icon={faTrashAlt}
+                    onClick={() => removeTeam(teamIndex)}
+                    disabled={teams.length < 2}
+                    danger
+                  /> */}
+                </div>
+              </div>
+            </RowContainer>
             <i className="print-only">{team.archetype}</i>
-          </div>
-        </RowContainer>
-      </SubTitle>
-      <Field
-        id={`fireTeam${teamIndex + 1}_name`}
-        className="no-print"
-        label="Name:"
-        small
-      >
-        <Select
-          id={`fireTeam${teamIndex + 1}_name`}
-          value={team.name}
-          onChange={onSelectFireTeam(teamIndex)}
-        >
-          <option value=""></option>
-          {faction.fireTeams &&
-            faction.fireTeams.map((ft) => (
-              <option key={ft.name} value={ft.name}>
-                {ft.name}
-              </option>
-            ))}
-        </Select>
-      </Field>
-      {team.name && (
-        <>
+          </SubTitle>
+          <Field
+            id={`fireTeam${teamIndex + 1}_name`}
+            className="no-print"
+            label="Name:"
+          >
+            <Select
+              id={`fireTeam${teamIndex + 1}_name`}
+              value={team.name}
+              onChange={onSelectFireTeam(teamIndex)}
+            >
+              <option value=""></option>
+              {faction.fireTeams &&
+                faction.fireTeams.map((ft) => (
+                  <option key={ft.name} value={ft.name}>
+                    {ft.name}
+                  </option>
+                ))}
+            </Select>
+          </Field>
           <Field
             id={`fireTeam${teamIndex + 1}_archetype`}
             className="no-print"
             label="Archetype:"
-            small
           >
             <Input
               id={`fireTeam${teamIndex + 1}_archetype`}
@@ -152,14 +168,46 @@ export const TeamForm = ({
               readOnly
             />
           </Field>
+        </TeamFormSection>
+      </TeamFormContainer>
+      {team.name && (
+        <Section>
           <OperativesTable
             editTeam={editTeam}
             fireTeam={fireTeam}
             operatives={team.operatives}
             teamIndex={teamIndex}
           />
-        </>
+        </Section>
       )}
-    </Section>
+    </>
   );
 };
+
+const TEAM_IMG_SIZE = 120;
+const TEAM_IMG_SIZE_PRINT = 80;
+
+const TeamFormContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: ${({ theme }) => theme.sizes.lg};
+
+  @media print {
+    margin-bottom: ${({ theme }) => theme.sizes.sm};
+  }
+`;
+
+const TeamFormSection = styled(Section)`
+  flex-grow: 1;
+`;
+
+const TeamImg = styled.img`
+  width: ${TEAM_IMG_SIZE}px;
+  height: ${TEAM_IMG_SIZE}px;
+  border: 4px double ${({ theme }) => theme.colors.bg2};
+
+  @media print {
+    width: ${TEAM_IMG_SIZE_PRINT}px;
+    height: ${TEAM_IMG_SIZE_PRINT}px;
+  }
+`;

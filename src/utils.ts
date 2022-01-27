@@ -19,5 +19,5 @@ export const findFaction = (factionName: string): Faction | undefined => {
   }
 };
 
-export const getArmyId = (army: Army) =>
-  army.name.toLowerCase().replace(/ /g, "_");
+export const getNameId = (name: string) =>
+  name.toLowerCase().replace(/ /g, "_");

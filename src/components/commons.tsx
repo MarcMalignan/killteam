@@ -15,14 +15,15 @@ export const RowContainer = styled.div`
   & > * {
     display: flex;
     flex-grow: 1;
-    flex-basis: 0;
     align-items: center;
     justify-content: center;
 
     &:first-child {
+      flex-basis: 0;
       justify-content: flex-start;
     }
     &:last-child {
+      flex-basis: 0;
       justify-content: flex-end;
     }
   }

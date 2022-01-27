@@ -105,6 +105,7 @@ export const OperativesTable = ({
                   className="print-only"
                   type="text"
                   value={operative.name}
+                  readOnly
                 />
               </td>
               <td>

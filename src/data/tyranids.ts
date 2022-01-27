@@ -28,7 +28,7 @@ export const tyranids: Army = {
         {
           name: "Tyranid Swarm",
           archetypes: ["Seek and destroy", "Security", "Recon"],
-          operatives: [{ name: "Hormogaunt" }, { name: "Termagant" }],
+          operatives: [{ name: "Hormagaunt" }, { name: "Termagant" }],
           nbOperatives: 8,
         },
       ],

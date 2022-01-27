@@ -23,6 +23,7 @@ const PageContainer = styled.div`
 
   @media print {
     max-width: none;
+    padding: ${({ theme }) => theme.sizes.sm};
     background: none;
     box-shadow: none;
     overflow: visible;
@@ -33,6 +34,10 @@ const PageInner = styled.div`
   flex-grow: 1;
   padding: ${({ theme }) => theme.sizes.xl} 0;
   border: 4px double ${({ theme }) => theme.colors.bg2};
+
+  @media print {
+    padding: ${({ theme }) => theme.sizes.lg} 0;
+  }
 `;
 
 export const Title = styled.h1`
@@ -40,12 +45,16 @@ export const Title = styled.h1`
   text-align: center;
   text-transform: uppercase;
   font-family: ${({ theme }) => theme.fonts.header};
-  font-size: ${({ theme }) => theme.fontSizes.xl};
+  font-size: ${({ theme }) => theme.fontSizes.xxl};
   color: ${({ theme }) => theme.colors.accent};
 
   i {
     font-size: ${({ theme }) => theme.fontSizes.lg};
     color: ${({ theme }) => theme.colors.accent2};
+  }
+
+  @media print {
+    font-size: ${({ theme }) => theme.fontSizes.xl};
   }
 `;
 
@@ -57,6 +66,8 @@ export const SubTitle = styled.h2`
   color: ${({ theme }) => theme.colors.accent};
 
   i {
+    margin: 0;
+    font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.accent2};
   }
 `;

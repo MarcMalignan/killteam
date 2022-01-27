@@ -26,14 +26,13 @@ export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
     const faction = findFaction(factionName);
 
     if (
-      roster.faction &&
-      confirm(
-        "Do you really want to change the faction?\n(this will reset all your roster data)"
-      )
+      !roster.faction ||
+      (roster.faction &&
+        confirm(
+          "Do you really want to change the faction?\n(this will reset all your roster data)"
+        ))
     ) {
       editRoster({ ...generateRoster(faction.nbTeams), faction: factionName });
-    } else {
-      editRoster({ faction: factionName });
     }
 
     setFaction(findFaction(factionName));

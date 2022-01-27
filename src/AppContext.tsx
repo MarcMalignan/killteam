@@ -1,6 +1,6 @@
 import React, { createContext, FC, useState } from "react";
 import { Army, Faction } from "./types";
-import { getArmyId } from "./utils";
+import { getNameId } from "./utils";
 
 const defaultBg = require("./img/bg.jpg");
 
@@ -27,7 +27,7 @@ export const AppContextProvider: FC<{}> = ({ children }) => {
   const setArmyBackground = (army: Army) => {
     let bg = defaultBg;
     try {
-      bg = require(`./img/armies/${getArmyId(army)}.jpg`);
+      bg = require(`./img/armies/${getNameId(army.name)}.jpg`);
     } catch {}
     setBg(bg.default);
   };

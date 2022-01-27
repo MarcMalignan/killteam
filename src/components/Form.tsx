@@ -3,15 +3,11 @@ import styled from "styled-components";
 
 export const FIELD_HEIGHT = 30;
 
-interface FieldContainerProps {
-  small?: boolean;
-}
-
 type FieldProps = {
   className?: string;
   id?: string;
   label?: string;
-} & FieldContainerProps;
+};
 
 export const Field: FC<FieldProps> = ({ children, className, id, label }) => (
   <FieldContainer className={className}>
@@ -20,10 +16,10 @@ export const Field: FC<FieldProps> = ({ children, className, id, label }) => (
   </FieldContainer>
 );
 
-const FieldContainer = styled.div<FieldContainerProps>`
+const FieldContainer = styled.div`
   display: flex;
   align-items: center;
-  width: ${({ small }) => (small ? "75%" : "100%")};
+  width: 100%;
 
   &:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.sizes.md};

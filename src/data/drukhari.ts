@@ -21,8 +21,8 @@ export const drukhari: Army = {
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [
             { name: "Hekatrix", leader: true },
-            { name: "Kabalite Warrior" },
-            { name: "Kabalite Fighter" },
+            { name: "Wych Warrior" },
+            { name: "Wych Fighter" },
           ],
         },
       ],
