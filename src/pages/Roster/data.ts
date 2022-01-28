@@ -11,7 +11,6 @@ export const generateOperative = (): Operative => ({
 export const generateTeam = (nbOps = DEFAULT_NB_OPERATIVES): FireTeam => ({
   id: uuid(),
   name: "",
-  archetype: "",
   operatives: Array(nbOps).fill(null).map(generateOperative),
 });
 

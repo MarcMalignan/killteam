@@ -70,7 +70,6 @@ export const TeamForm = ({
 
       editTeam(teamIndex, {
         name: newTeam,
-        archetype: teamData.archetypes.join(" / "),
         operatives: Array(teamData.nbOperatives || DEFAULT_NB_OPERATIVES)
           .fill(null)
           .map(generateOperative),
@@ -135,7 +134,7 @@ export const TeamForm = ({
                 </div>
               </div>
             </RowContainer>
-            <i className="print-only">{team.archetype}</i>
+            <i className="print-only">{fireTeam?.archetypes.join(" / ")}</i>
           </SubTitle>
           <Field
             id={`fireTeam${teamIndex + 1}_name`}
@@ -164,7 +163,7 @@ export const TeamForm = ({
             <Input
               id={`fireTeam${teamIndex + 1}_archetype`}
               type="text"
-              value={team.archetype}
+              value={fireTeam ? fireTeam.archetypes.join(" / ") : ""}
               readOnly
             />
           </Field>

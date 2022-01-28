@@ -39,7 +39,6 @@ export type Operative = {
 export type FireTeam = {
   id: string;
   name: string;
-  archetype: string;
   operatives: Operative[];
 };
 
