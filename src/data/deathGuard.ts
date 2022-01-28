@@ -9,6 +9,7 @@ export const deathGuard: CompendiumArmy = {
       name: "Death Guard",
       fireTeams: [
         {
+          id: "plagueMarine",
           name: "Plague Marine",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -22,6 +23,7 @@ export const deathGuard: CompendiumArmy = {
           nbOperatives: 2,
         },
         {
+          id: "poxwalker",
           name: "Poxwalker",
           archetypes: ["Infiltration", "Security"],
           operatives: [{ name: "Poxwalker" }],

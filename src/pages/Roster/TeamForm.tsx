@@ -8,7 +8,7 @@ import { Field, Input, Select } from "../../components/Form";
 import { Section, SubTitle } from "../../components/Page";
 import { DEFAULT_NB_OPERATIVES } from "../../data";
 import { CompendiumFireTeam, FireTeam, Roster } from "../../types";
-import { getNameId } from "../../utils";
+import { findArmy } from "../../utils";
 import { generateOperative } from "./data";
 import { OperativesTable } from "./OperativesTable";
 
@@ -63,13 +63,13 @@ export const TeamForm = ({
 
   const onSelectFireTeam =
     (teamIndex: number) => (event: ChangeEvent<HTMLSelectElement>) => {
-      const newTeam = event.currentTarget.value;
-      const teamData = faction.fireTeams.find((t) => t.name === newTeam);
+      const newId = event.currentTarget.value;
+      const teamData = faction.fireTeams.find((t) => t.id === newId);
 
       setFireTeam(teamData);
 
       editTeam(teamIndex, {
-        name: newTeam,
+        compendiumId: newId,
         operatives: Array(teamData.nbOperatives || DEFAULT_NB_OPERATIVES)
           .fill(null)
           .map(generateOperative),
@@ -77,15 +77,15 @@ export const TeamForm = ({
     };
 
   useEffect(() => {
-    const teamData = faction.fireTeams.find((t) => t.name === team.name);
+    const teamData = faction.fireTeams.find((t) => t.id === team.id);
     setFireTeam(teamData);
   }, [faction]);
 
   useEffect(() => {
     if (fireTeam) {
-      const fireTeamId = getNameId(fireTeam.name);
+      const army = findArmy(faction.id);
       try {
-        const img = require(`../../img/fireTeams/${fireTeamId}.png`);
+        const img = require(`../../img/armies/${army.id}/${fireTeam.id}.png`);
         setFireTeamImg(img.default);
       } catch {
         setFireTeamImg(DEFAULT_FIRETEAM_IMG.default);
@@ -105,7 +105,7 @@ export const TeamForm = ({
               <div>
                 <span className="no-print">Fire Team #{teamIndex + 1}</span>
                 <span className="print-only">
-                  #{teamIndex + 1} - {team.name} Fire Team
+                  #{teamIndex + 1} - {fireTeam?.name} Fire Team
                 </span>
               </div>
               <div>
@@ -143,13 +143,13 @@ export const TeamForm = ({
           >
             <Select
               id={`fireTeam${teamIndex + 1}_name`}
-              value={team.name}
+              value={team.compendiumId}
               onChange={onSelectFireTeam(teamIndex)}
             >
               <option value=""></option>
               {faction.fireTeams &&
                 faction.fireTeams.map((ft) => (
-                  <option key={ft.name} value={ft.name}>
+                  <option key={ft.id} value={ft.id}>
                     {ft.name}
                   </option>
                 ))}
@@ -169,7 +169,7 @@ export const TeamForm = ({
           </Field>
         </TeamFormSection>
       </TeamFormContainer>
-      {team.name && (
+      {team.compendiumId && (
         <Section>
           <OperativesTable
             editTeam={editTeam}

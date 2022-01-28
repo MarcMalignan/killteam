@@ -9,6 +9,7 @@ export const genestealerCults: CompendiumArmy = {
       name: "Brood Coven",
       fireTeams: [
         {
+          id: "neophyteHybrid",
           name: "Neophyte Hybrid",
           archetypes: ["Security", "Recon", "Infiltration"],
           operatives: [
@@ -21,6 +22,7 @@ export const genestealerCults: CompendiumArmy = {
           nbOperatives: 7,
         },
         {
+          id: "acolyteHybrid",
           name: "Acolyte Hybrid",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
@@ -32,6 +34,7 @@ export const genestealerCults: CompendiumArmy = {
           ],
         },
         {
+          id: "hybridMetamorph",
           name: "Hybrid Metamorph",
           archetypes: ["Seek and destroy"],
           operatives: [

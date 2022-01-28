@@ -9,6 +9,7 @@ export const thousandSons: CompendiumArmy = {
       name: "Thousand Sons",
       fireTeams: [
         {
+          id: "rubricMarine",
           name: "Rubric Marine",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -20,6 +21,7 @@ export const thousandSons: CompendiumArmy = {
           nbOperatives: 2,
         },
         {
+          id: "tzaangor",
           name: "Tzaangor",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [

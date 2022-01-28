@@ -9,6 +9,7 @@ export const harlequins: CompendiumArmy = {
       name: "Troupe",
       fireTeams: [
         {
+          id: "troupe",
           name: "Troupe",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [

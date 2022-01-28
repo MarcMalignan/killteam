@@ -9,6 +9,7 @@ export const astraMilitarum: CompendiumArmy = {
       name: "Imperial Guard",
       fireTeams: [
         {
+          id: "guardsman",
           name: "Guardsman",
           archetypes: ["Security"],
           operatives: [
@@ -20,6 +21,7 @@ export const astraMilitarum: CompendiumArmy = {
           nbOperatives: 7,
         },
         {
+          id: "scion",
           name: "Tempestus Scion",
           archetypes: ["Security", "Seek and destroy", "Infiltration", "Recon"],
           operatives: [

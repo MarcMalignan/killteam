@@ -10,6 +10,7 @@ export const spaceMarines: CompendiumArmy = {
       selectableKeywords: ["Deathwatch"],
       fireTeams: [
         {
+          id: "intercessor",
           name: "Intercessor",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -18,6 +19,7 @@ export const spaceMarines: CompendiumArmy = {
           ],
         },
         {
+          id: "assaultIntercessor",
           name: "Assault Intercessor",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -26,6 +28,7 @@ export const spaceMarines: CompendiumArmy = {
           ],
         },
         {
+          id: "incursor",
           name: "Incursor",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [
@@ -34,6 +37,7 @@ export const spaceMarines: CompendiumArmy = {
           ],
         },
         {
+          id: "infiltrator",
           name: "Infiltrator",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [
@@ -42,11 +46,13 @@ export const spaceMarines: CompendiumArmy = {
           ],
         },
         {
+          id: "reiver",
           name: "Reiver",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [{ name: "Reiver Sergeant" }, { name: "Reiver Warrior" }],
         },
         {
+          id: "heavyIntercessor",
           name: "Heavy Intercessor",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -57,6 +63,7 @@ export const spaceMarines: CompendiumArmy = {
           nbOperatives: 4,
         },
         {
+          id: "marine",
           name: "Tactical Marine",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -68,6 +75,7 @@ export const spaceMarines: CompendiumArmy = {
           nbOperatives: 6,
         },
         {
+          id: "scout",
           name: "Scout",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [
@@ -80,6 +88,7 @@ export const spaceMarines: CompendiumArmy = {
           nbOperatives: 10,
         },
         {
+          id: "deathwatch",
           name: "Deathwatch Veteran",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [

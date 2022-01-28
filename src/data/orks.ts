@@ -9,6 +9,7 @@ export const orks: CompendiumArmy = {
       name: "Greenskin",
       fireTeams: [
         {
+          id: "boy",
           name: "Boy",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -18,6 +19,7 @@ export const orks: CompendiumArmy = {
           ],
         },
         {
+          id: "kommando",
           name: "Clan Kommando",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
@@ -26,6 +28,7 @@ export const orks: CompendiumArmy = {
           ],
         },
         {
+          id: "speshulist",
           name: "Speshulist",
           archetypes: ["Seek and destroy"],
           operatives: [

@@ -9,6 +9,7 @@ export const chaosSpaceMarines: CompendiumArmy = {
       name: "Traitor Space Marine",
       fireTeams: [
         {
+          id: "chaosSM",
           name: "Chaos Space Marine",
           archetypes: ["Seek and destroy", "Recon", "Infiltration", "Security"],
           operatives: [
@@ -21,6 +22,7 @@ export const chaosSpaceMarines: CompendiumArmy = {
           nbOperatives: 3,
         },
         {
+          id: "cultist",
           name: "Chaos Cultist",
           archetypes: ["Recon", "Infiltration"],
           operatives: [

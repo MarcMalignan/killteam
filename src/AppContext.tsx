@@ -26,7 +26,7 @@ export const AppContextProvider: FC<{}> = ({ children }) => {
   const setArmyBackground = (army: CompendiumArmy) => {
     let bg = defaultBg;
     try {
-      bg = require(`./img/armies/${army.id}.jpg`);
+      bg = require(`./img/armies/${army.id}/bg.jpg`);
     } catch {}
     setBg(bg.default);
   };

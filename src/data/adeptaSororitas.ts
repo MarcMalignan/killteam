@@ -9,6 +9,7 @@ export const adeptaSororitas: CompendiumArmy = {
       name: "Ecclesiarchy",
       fireTeams: [
         {
+          id: "sister",
           name: "Battle Sister",
           archetypes: ["Security"],
           operatives: [
@@ -20,6 +21,7 @@ export const adeptaSororitas: CompendiumArmy = {
           ],
         },
         {
+          id: "repentia",
           name: "Repentia",
           archetypes: ["Seek and destroy"],
           operatives: [
@@ -28,6 +30,7 @@ export const adeptaSororitas: CompendiumArmy = {
           ],
         },
         {
+          id: "flagellant",
           name: "Arco-flagellant",
           archetypes: ["Seek and destroy"],
           operatives: [{ name: "Arco-flagellant" }],

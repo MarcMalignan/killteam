@@ -9,6 +9,7 @@ export const tauEmpire: CompendiumArmy = {
       name: "Hunter Cadre",
       fireTeams: [
         {
+          id: "fireWarrior",
           name: "Fire Warrior",
           archetypes: ["Security"],
           operatives: [
@@ -19,6 +20,7 @@ export const tauEmpire: CompendiumArmy = {
           nbOperatives: 6,
         },
         {
+          id: "pathfinder",
           name: "Pathfinder",
           archetypes: ["Recon"],
           operatives: [
@@ -30,6 +32,7 @@ export const tauEmpire: CompendiumArmy = {
           nbOperatives: 6,
         },
         {
+          id: "stealthBattlesuit",
           name: "Stealth Battlesuit",
           archetypes: ["Infiltration", "Recon"],
           operatives: [
@@ -46,6 +49,7 @@ export const tauEmpire: CompendiumArmy = {
       name: "Mercenary Cadre",
       fireTeams: [
         {
+          id: "mercenary",
           name: "Cadre Mercenary",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [

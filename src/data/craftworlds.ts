@@ -9,6 +9,7 @@ export const craftworlds: CompendiumArmy = {
       name: "Craftworld",
       fireTeams: [
         {
+          id: "guardianDefender",
           name: "Guardian Defender",
           archetypes: ["Security", "Recon"],
           operatives: [
@@ -19,6 +20,7 @@ export const craftworlds: CompendiumArmy = {
           ],
         },
         {
+          id: "stormGuardian",
           name: "Storm Guardian",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [
@@ -28,6 +30,7 @@ export const craftworlds: CompendiumArmy = {
           ],
         },
         {
+          id: "ranger",
           name: "Ranger",
           archetypes: ["Recon", "Infiltration"],
           operatives: [
@@ -37,6 +40,7 @@ export const craftworlds: CompendiumArmy = {
           nbOperatives: 4,
         },
         {
+          id: "direAvenger",
           name: "Dire Avenger",
           archetypes: ["Seek and destroy", "Security", "Recon"],
           operatives: [

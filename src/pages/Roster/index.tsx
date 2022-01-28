@@ -22,7 +22,7 @@ import {
 } from "../../components/Page";
 import { Roster as RosterType } from "../../types";
 import { findArmy, findFaction } from "../../utils";
-import { generateRoster, generateTeam } from "./data";
+import { generateRoster } from "./data";
 import { InfoForm } from "./InfoForm";
 import { TeamForm } from "./TeamForm";
 

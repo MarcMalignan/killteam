@@ -20,6 +20,3 @@ export const findFaction = (
     }
   }
 };
-
-export const getNameId = (name: string) =>
-  name.toLowerCase().replace(/ /g, "_");

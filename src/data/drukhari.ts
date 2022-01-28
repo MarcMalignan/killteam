@@ -9,6 +9,7 @@ export const drukhari: CompendiumArmy = {
       name: "Commorrite",
       fireTeams: [
         {
+          id: "kabalite",
           name: "Kabalite",
           archetypes: ["Security", "Recon"],
           operatives: [
@@ -19,6 +20,7 @@ export const drukhari: CompendiumArmy = {
           ],
         },
         {
+          id: "wych",
           name: "Wych",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [

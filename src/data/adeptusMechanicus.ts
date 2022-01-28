@@ -9,6 +9,7 @@ export const adeptusMechanicus: CompendiumArmy = {
       name: "Forge World",
       fireTeams: [
         {
+          id: "skitariiRanger",
           name: "Skitarii Ranger",
           archetypes: ["Recon", "Security"],
           operatives: [
@@ -18,6 +19,7 @@ export const adeptusMechanicus: CompendiumArmy = {
           ],
         },
         {
+          id: "skitariiVanguard",
           name: "Skitarii Vanguard",
           archetypes: ["Security"],
           operatives: [
@@ -27,6 +29,7 @@ export const adeptusMechanicus: CompendiumArmy = {
           ],
         },
         {
+          id: "sicarian",
           name: "Sicarian",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [

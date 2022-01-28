@@ -9,6 +9,7 @@ export const chaosDaemons: CompendiumArmy = {
       name: "Chaos Daemon",
       fireTeams: [
         {
+          id: "bloodletter",
           name: "Bloodletter",
           archetypes: ["Seek and destroy"],
           operatives: [
@@ -20,6 +21,7 @@ export const chaosDaemons: CompendiumArmy = {
           nbOperatives: 6,
         },
         {
+          id: "daemonette",
           name: "Daemonette",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [
@@ -31,6 +33,7 @@ export const chaosDaemons: CompendiumArmy = {
           nbOperatives: 6,
         },
         {
+          id: "plaguebearer",
           name: "Plaguebearer",
           archetypes: ["Security"],
           operatives: [
@@ -42,6 +45,7 @@ export const chaosDaemons: CompendiumArmy = {
           nbOperatives: 6,
         },
         {
+          id: "pinkHorror",
           name: "Pink Horror",
           archetypes: ["Security"],
           operatives: [
@@ -53,6 +57,7 @@ export const chaosDaemons: CompendiumArmy = {
           nbOperatives: 6,
         },
         {
+          id: "blueHorror",
           name: "Blue Horror",
           archetypes: ["Security", "Recon"],
           operatives: [{ name: "Blue Horror" }],

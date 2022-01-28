@@ -9,11 +9,13 @@ export const necrons: CompendiumArmy = {
       name: "Tomb World",
       fireTeams: [
         {
+          id: "necronWarrior",
           name: "Necron Warrior",
           archetypes: ["Security"],
           operatives: [{ name: "Necron Warrior" }],
         },
         {
+          id: "immortalFire",
           name: "Immortal Fire",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -23,6 +25,7 @@ export const necrons: CompendiumArmy = {
           nbOperatives: 4,
         },
         {
+          id: "flayedOne",
           name: "Flayed One",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
@@ -31,6 +34,7 @@ export const necrons: CompendiumArmy = {
           ],
         },
         {
+          id: "deathmark",
           name: "Deathmark",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [

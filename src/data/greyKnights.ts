@@ -9,6 +9,7 @@ export const greyKnights: CompendiumArmy = {
       name: "Grey Knight",
       fireTeams: [
         {
+          id: "greyKnight",
           name: "Grey Knight",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [

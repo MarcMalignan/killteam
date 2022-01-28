@@ -6,6 +6,7 @@ export type CompendiumOperative = {
 };
 
 export type CompendiumFireTeam = {
+  id: string;
   name: string;
   archetypes: Archetype[];
   nbOperatives?: number;
@@ -38,7 +39,7 @@ export type Operative = {
 
 export type FireTeam = {
   id: string;
-  name: string;
+  compendiumId: string;
   operatives: Operative[];
 };
 

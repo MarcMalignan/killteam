@@ -9,6 +9,7 @@ export const tyranids: CompendiumArmy = {
       name: "Hive Fleet",
       fireTeams: [
         {
+          id: "tyranidWarrior",
           name: "Tyranid Warrior",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -20,6 +21,7 @@ export const tyranids: CompendiumArmy = {
           nbOperatives: 3,
         },
         {
+          id: "genestealer",
           name: "Genestealer",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
@@ -28,6 +30,7 @@ export const tyranids: CompendiumArmy = {
           ],
         },
         {
+          id: "swarm",
           name: "Tyranid Swarm",
           archetypes: ["Seek and destroy", "Security", "Recon"],
           operatives: [{ name: "Hormagaunt" }, { name: "Termagant" }],

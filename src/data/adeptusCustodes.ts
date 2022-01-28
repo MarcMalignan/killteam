@@ -9,6 +9,7 @@ export const adeptusCustodes: CompendiumArmy = {
       name: "Talons of the Emperor",
       fireTeams: [
         {
+          id: "custodian",
           name: "Custodian Guard",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
@@ -18,6 +19,7 @@ export const adeptusCustodes: CompendiumArmy = {
           nbOperatives: 2,
         },
         {
+          id: "sisterOfSilence",
           name: "Sister of Silence",
           archetypes: ["Seek and destroy", "Security", "Recon"],
           operatives: [
