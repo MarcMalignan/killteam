@@ -1,9 +1,11 @@
-import { Army } from "../types";
+import { CompendiumArmy } from "../types";
 
-export const craftworlds: Army = {
+export const craftworlds: CompendiumArmy = {
+  id: "craftworlds",
   name: "Craftworlds",
   factions: [
     {
+      id: "craftworld",
       name: "Craftworld",
       fireTeams: [
         {

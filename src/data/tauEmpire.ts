@@ -1,9 +1,11 @@
-import { Army } from "../types";
+import { CompendiumArmy } from "../types";
 
-export const tauEmpire: Army = {
+export const tauEmpire: CompendiumArmy = {
+  id: "tau",
   name: "Tau Empire",
   factions: [
     {
+      id: "hunterCadre",
       name: "Hunter Cadre",
       fireTeams: [
         {
@@ -40,6 +42,7 @@ export const tauEmpire: Army = {
       ],
     },
     {
+      id: "mercenaryCadre",
       name: "Mercenary Cadre",
       fireTeams: [
         {

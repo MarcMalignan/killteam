@@ -1,9 +1,11 @@
-import { Army } from "../types";
+import { CompendiumArmy } from "../types";
 
-export const orks: Army = {
+export const orks: CompendiumArmy = {
+  id: "orks",
   name: "Orks",
   factions: [
     {
+      id: "greenskin",
       name: "Greenskin",
       fireTeams: [
         {

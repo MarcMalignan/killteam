@@ -49,7 +49,7 @@ export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
           <option value=""></option>
           {compendium.armies.map((army) =>
             army.factions.map((faction) => (
-              <option key={faction.name} value={faction.name}>
+              <option key={faction.id} value={faction.id}>
                 {army.name} - {faction.name}
               </option>
             ))

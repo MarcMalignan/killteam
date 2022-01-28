@@ -1,18 +1,20 @@
 import { compendium } from "./data";
-import { Army, Faction } from "./types";
+import { CompendiumArmy, CompendiumFaction } from "./types";
 
-export const findArmy = (factionName: string): Army | undefined => {
+export const findArmy = (factionId: string): CompendiumArmy | undefined => {
   for (let i = 0; i < compendium.armies.length; i++) {
-    if (compendium.armies[i].factions.find((f) => f.name === factionName)) {
+    if (compendium.armies[i].factions.find((f) => f.id === factionId)) {
       return compendium.armies[i];
     }
   }
 };
 
-export const findFaction = (factionName: string): Faction | undefined => {
+export const findFaction = (
+  factionId: string
+): CompendiumFaction | undefined => {
   for (let i = 0; i < compendium.armies.length; i++) {
     for (let j = 0; j < compendium.armies[i].factions.length; j++) {
-      if (compendium.armies[i].factions[j].name === factionName) {
+      if (compendium.armies[i].factions[j].id === factionId) {
         return compendium.armies[i].factions[j];
       }
     }

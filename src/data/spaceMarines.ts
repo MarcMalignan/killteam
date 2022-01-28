@@ -1,9 +1,11 @@
-import { Army } from "../types";
+import { CompendiumArmy } from "../types";
 
-export const spaceMarines: Army = {
+export const spaceMarines: CompendiumArmy = {
+  id: "sm",
   name: "Space Marines",
   factions: [
     {
+      id: "sm",
       name: "Space Marine",
       selectableKeywords: ["Deathwatch"],
       fireTeams: [

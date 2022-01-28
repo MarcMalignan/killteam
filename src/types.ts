@@ -12,20 +12,22 @@ export type CompendiumFireTeam = {
   operatives?: CompendiumOperative[];
 };
 
-export type Faction = {
+export type CompendiumFaction = {
+  id: string;
   name: string;
   selectableKeywords?: string[];
   fireTeams?: CompendiumFireTeam[];
   nbTeams?: number;
 };
 
-export type Army = {
+export type CompendiumArmy = {
+  id: string;
   name: string;
-  factions: Faction[];
+  factions: CompendiumFaction[];
 };
 
 export type Compendium = {
-  armies: Army[];
+  armies: CompendiumArmy[];
 };
 
 export type Operative = {
