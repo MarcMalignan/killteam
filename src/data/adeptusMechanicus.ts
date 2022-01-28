@@ -13,9 +13,9 @@ export const adeptusMechanicus: CompendiumArmy = {
           name: "Skitarii Ranger",
           archetypes: ["Recon", "Security"],
           operatives: [
-            { name: "Skitarii Ranger Alpha", leader: true },
-            { name: "Skitarii Ranger Trooper" },
-            { name: "Skitarii Ranger Gunner" },
+            { id: "1", name: "Skitarii Ranger Alpha", leader: true },
+            { id: "2", name: "Skitarii Ranger Trooper" },
+            { id: "3", name: "Skitarii Ranger Gunner" },
           ],
         },
         {
@@ -23,9 +23,9 @@ export const adeptusMechanicus: CompendiumArmy = {
           name: "Skitarii Vanguard",
           archetypes: ["Security"],
           operatives: [
-            { name: "Skitarii Vanguard Alpha", leader: true },
-            { name: "Skitarii Vanguard Trooper" },
-            { name: "Skitarii Vanguard Gunner" },
+            { id: "1", name: "Skitarii Vanguard Alpha", leader: true },
+            { id: "2", name: "Skitarii Vanguard Trooper" },
+            { id: "3", name: "Skitarii Vanguard Gunner" },
           ],
         },
         {
@@ -33,10 +33,10 @@ export const adeptusMechanicus: CompendiumArmy = {
           name: "Sicarian",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [
-            { name: "Sicarian Ruststalker Princeps", leader: true },
-            { name: "Sicarian Infiltrator Princeps", leader: true },
-            { name: "Sicarian Ruststalker Trooper" },
-            { name: "Sicarian Infiltrator Trooper" },
+            { id: "1", name: "Sicarian Ruststalker Princeps", leader: true },
+            { id: "2", name: "Sicarian Infiltrator Princeps", leader: true },
+            { id: "3", name: "Sicarian Ruststalker Trooper" },
+            { id: "4", name: "Sicarian Infiltrator Trooper" },
           ],
           nbOperatives: 4,
         },

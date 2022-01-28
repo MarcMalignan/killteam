@@ -56,7 +56,7 @@ export const OperativesTable = ({
 
   const emptyOperative = (teamIndex: number, opIndex: number) => {
     const newOps = [...operatives];
-    newOps[opIndex].name = "";
+    newOps[opIndex].compendiumId = undefined;
     newOps[opIndex].notes = "";
     editTeam(teamIndex, { operatives: newOps });
   };
@@ -80,7 +80,7 @@ export const OperativesTable = ({
       <tbody>
         {operatives.map((operative, opIndex) => {
           const compendiumOperative = fireTeam?.operatives?.find(
-            (op) => op.name === operative.name
+            (op) => op.id === operative.compendiumId
           );
 
           return (
@@ -91,12 +91,12 @@ export const OperativesTable = ({
               <td>
                 <TableSelect
                   className="no-print"
-                  value={operative.name}
-                  onChange={editOperative(teamIndex, opIndex, "name")}
+                  value={operative.compendiumId}
+                  onChange={editOperative(teamIndex, opIndex, "compendiumId")}
                 >
                   <option value=""></option>
                   {fireTeam?.operatives?.map((op) => (
-                    <option key={op.name} value={op.name}>
+                    <option key={op.id} value={op.id}>
                       {op.name}
                     </option>
                   ))}
@@ -104,7 +104,7 @@ export const OperativesTable = ({
                 <TableInput
                   className="print-only"
                   type="text"
-                  value={operative.name}
+                  value={compendiumOperative?.name || ""}
                   readOnly
                 />
               </td>
@@ -136,7 +136,7 @@ export const OperativesTable = ({
                   icon={faTimes}
                   title="Empty operative"
                   onClick={() => emptyOperative(teamIndex, opIndex)}
-                  disabled={!operative.name && !operative.notes}
+                  disabled={!operative.compendiumId && !operative.notes}
                   small
                   square
                   danger

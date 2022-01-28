@@ -13,9 +13,9 @@ export const orks: CompendiumArmy = {
           name: "Boy",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
-            { name: "Boy Boss Nob", leader: true },
-            { name: "Boy Fighter" },
-            { name: "Boy Gunner" },
+            { id: "1", name: "Boy Boss Nob", leader: true },
+            { id: "2", name: "Boy Fighter" },
+            { id: "3", name: "Boy Gunner" },
           ],
         },
         {
@@ -23,8 +23,8 @@ export const orks: CompendiumArmy = {
           name: "Clan Kommando",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
-            { name: "Clan Kommando Nob", leader: true },
-            { name: "Clan Kommando Fighter" },
+            { id: "1", name: "Clan Kommando Nob", leader: true },
+            { id: "2", name: "Clan Kommando Fighter" },
           ],
         },
         {
@@ -32,9 +32,9 @@ export const orks: CompendiumArmy = {
           name: "Speshulist",
           archetypes: ["Seek and destroy"],
           operatives: [
-            { name: "Spanner Speshulist", leader: true },
-            { name: "Burna Boy Speshulist" },
-            { name: "Loota Speshulist" },
+            { id: "1", name: "Spanner Speshulist", leader: true },
+            { id: "2", name: "Burna Boy Speshulist" },
+            { id: "3", name: "Loota Speshulist" },
           ],
           nbOperatives: 4,
         },

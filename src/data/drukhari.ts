@@ -13,10 +13,10 @@ export const drukhari: CompendiumArmy = {
           name: "Kabalite",
           archetypes: ["Security", "Recon"],
           operatives: [
-            { name: "Sybarite", leader: true },
-            { name: "Kabalite Warrior" },
-            { name: "Kabalite Gunner" },
-            { name: "Kabalite Heavy Gunner" },
+            { id: "1", name: "Sybarite", leader: true },
+            { id: "2", name: "Kabalite Warrior" },
+            { id: "3", name: "Kabalite Gunner" },
+            { id: "4", name: "Kabalite Heavy Gunner" },
           ],
         },
         {
@@ -24,9 +24,9 @@ export const drukhari: CompendiumArmy = {
           name: "Wych",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [
-            { name: "Hekatrix", leader: true },
-            { name: "Wych Warrior" },
-            { name: "Wych Fighter" },
+            { id: "1", name: "Hekatrix", leader: true },
+            { id: "2", name: "Wych Warrior" },
+            { id: "3", name: "Wych Fighter" },
           ],
         },
       ],

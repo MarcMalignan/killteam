@@ -1,6 +1,7 @@
 type Archetype = "Infiltration" | "Recon" | "Security" | "Seek and destroy";
 
 export type CompendiumOperative = {
+  id: string;
   name: string;
   leader?: boolean;
 };
@@ -33,7 +34,7 @@ export type Compendium = {
 
 export type Operative = {
   id: string;
-  name: string;
+  compendiumId: string;
   notes: string;
 };
 

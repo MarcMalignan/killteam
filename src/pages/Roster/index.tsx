@@ -103,7 +103,7 @@ export const Roster = () => {
             <div>
               <span className="no-print">Kill Team Roster</span>
               <span className="print-only">
-                <NoWrap>{roster.faction}</NoWrap> <NoWrap>Kill Team</NoWrap>
+                <NoWrap>{faction?.name}</NoWrap> <NoWrap>Kill Team</NoWrap>
               </span>
             </div>
             <div>

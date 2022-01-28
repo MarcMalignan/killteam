@@ -77,7 +77,7 @@ export const TeamForm = ({
     };
 
   useEffect(() => {
-    const teamData = faction.fireTeams.find((t) => t.id === team.id);
+    const teamData = faction.fireTeams.find((t) => t.id === team.compendiumId);
     setFireTeam(teamData);
   }, [faction]);
 

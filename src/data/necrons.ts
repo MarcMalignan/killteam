@@ -12,15 +12,15 @@ export const necrons: CompendiumArmy = {
           id: "necronWarrior",
           name: "Necron Warrior",
           archetypes: ["Security"],
-          operatives: [{ name: "Necron Warrior" }],
+          operatives: [{ id: "1", name: "Necron Warrior" }],
         },
         {
           id: "immortalFire",
           name: "Immortal Fire",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
-            { name: "Immortal Leader", leader: true },
-            { name: "Immortal Warrior" },
+            { id: "1", name: "Immortal Leader", leader: true },
+            { id: "2", name: "Immortal Warrior" },
           ],
           nbOperatives: 4,
         },
@@ -29,8 +29,8 @@ export const necrons: CompendiumArmy = {
           name: "Flayed One",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
-            { name: "Flayed One Leader", leader: true },
-            { name: "Flayed One Warrior" },
+            { id: "1", name: "Flayed One Leader", leader: true },
+            { id: "2", name: "Flayed One Warrior" },
           ],
         },
         {
@@ -38,8 +38,8 @@ export const necrons: CompendiumArmy = {
           name: "Deathmark",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [
-            { name: "Deathmark Leader", leader: true },
-            { name: "Deathmark Warrior" },
+            { id: "1", name: "Deathmark Leader", leader: true },
+            { id: "2", name: "Deathmark Warrior" },
           ],
           nbOperatives: 4,
         },

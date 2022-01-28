@@ -4,7 +4,7 @@ import { FireTeam, Operative, Roster } from "../../types";
 
 export const generateOperative = (): Operative => ({
   id: uuid(),
-  name: "",
+  compendiumId: undefined,
   notes: "",
 });
 

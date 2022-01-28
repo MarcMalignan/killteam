@@ -13,10 +13,10 @@ export const craftworlds: CompendiumArmy = {
           name: "Guardian Defender",
           archetypes: ["Security", "Recon"],
           operatives: [
-            { name: "Guardian Defender Leader", leader: true },
-            { name: "Guardian Defender Warrior" },
-            { name: "Guardian Defender Heavy Gunner" },
-            { name: "Guardian Defender Heavy Weapon Platform" },
+            { id: "1", name: "Guardian Defender Leader", leader: true },
+            { id: "2", name: "Guardian Defender Warrior" },
+            { id: "3", name: "Guardian Defender Heavy Gunner" },
+            { id: "4", name: "Guardian Defender Heavy Weapon Platform" },
           ],
         },
         {
@@ -24,9 +24,9 @@ export const craftworlds: CompendiumArmy = {
           name: "Storm Guardian",
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [
-            { name: "Storm Guardian Leader", leader: true },
-            { name: "Storm Guardian Warrior" },
-            { name: "Storm Guardian Gunner" },
+            { id: "1", name: "Storm Guardian Leader", leader: true },
+            { id: "2", name: "Storm Guardian Warrior" },
+            { id: "3", name: "Storm Guardian Gunner" },
           ],
         },
         {
@@ -34,8 +34,8 @@ export const craftworlds: CompendiumArmy = {
           name: "Ranger",
           archetypes: ["Recon", "Infiltration"],
           operatives: [
-            { name: "Ranger Leader", leader: true },
-            { name: "Ranger Warrior" },
+            { id: "1", name: "Ranger Leader", leader: true },
+            { id: "2", name: "Ranger Warrior" },
           ],
           nbOperatives: 4,
         },
@@ -44,8 +44,8 @@ export const craftworlds: CompendiumArmy = {
           name: "Dire Avenger",
           archetypes: ["Seek and destroy", "Security", "Recon"],
           operatives: [
-            { name: "Dire Avenger Exarch", leader: true },
-            { name: "Dire Avenger Warrior" },
+            { id: "1", name: "Dire Avenger Exarch", leader: true },
+            { id: "2", name: "Dire Avenger Warrior" },
           ],
           nbOperatives: 4,
         },
