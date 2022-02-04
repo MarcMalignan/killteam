@@ -5,24 +5,45 @@ export const FIELD_HEIGHT = 30;
 
 type FieldProps = {
   className?: string;
+  helper?: string;
   id?: string;
   label?: string;
 };
 
-export const Field: FC<FieldProps> = ({ children, className, id, label }) => (
-  <FieldContainer className={className}>
-    {label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
-    {children}
+export const Field: FC<FieldProps> = ({
+  children,
+  className,
+  helper,
+  id,
+  label,
+}) => (
+  <FieldContainer>
+    <FieldRow className={className}>
+      {label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
+      {children}
+    </FieldRow>
+    {helper && (
+      <FieldRow className={className}>
+        <FieldLabel></FieldLabel>
+        <FieldHelper>{helper}</FieldHelper>
+      </FieldRow>
+    )}
   </FieldContainer>
 );
 
 const FieldContainer = styled.div`
+  &:not(:last-child) {
+    margin-bottom: ${({ theme }) => theme.sizes.md};
+  }
+`;
+
+const FieldRow = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
 
   &:not(:last-child) {
-    margin-bottom: ${({ theme }) => theme.sizes.md};
+    margin-bottom: ${({ theme }) => theme.sizes.sm};
   }
 `;
 
@@ -30,6 +51,11 @@ const FieldLabel = styled.label`
   width: 25%;
   font-weight: bold;
   text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.accent2};
+`;
+
+const FieldHelper = styled.i`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
   color: ${({ theme }) => theme.colors.accent2};
 `;
 

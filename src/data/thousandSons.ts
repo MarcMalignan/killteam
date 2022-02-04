@@ -34,8 +34,29 @@ export const thousandSons: CompendiumArmy = {
         },
       ],
     },
-    // {
-    //   name: "Warp Coven",
-    // },
+    {
+      id: "warpCoven",
+      name: "Warp Coven",
+      fireTeams: [
+        {
+          id: "warpCoven",
+          name: "Warp Coven",
+          archetypes: ["Recon", "Security"], // TODO: A or B
+          operatives: [
+            { id: "1", name: "Sorcerer" },
+            { id: "2", name: "Rubric Marine Gunner" },
+            { id: "3", name: "Rubric Marine Icon Bearer" },
+            { id: "4", name: "Rubric Marine Warrior" },
+            { id: "5", name: "Tzaangor Champion" },
+            { id: "6", name: "Tzaangor Fighter" },
+            { id: "7", name: "Tzaangor Horn Bearer" },
+            { id: "8", name: "Tzaangor Icon Bearer" },
+          ],
+          nbOperatives: 11,
+        },
+      ],
+      nbTeams: 1,
+      extra: true,
+    },
   ],
 };

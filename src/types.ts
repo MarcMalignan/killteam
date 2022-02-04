@@ -11,15 +11,16 @@ export type CompendiumFireTeam = {
   name: string;
   archetypes: Archetype[];
   nbOperatives?: number;
-  operatives?: CompendiumOperative[];
+  operatives: CompendiumOperative[];
 };
 
 export type CompendiumFaction = {
   id: string;
   name: string;
   selectableKeywords?: string[];
-  fireTeams?: CompendiumFireTeam[];
+  fireTeams: CompendiumFireTeam[];
   nbTeams?: number;
+  extra?: boolean;
 };
 
 export type CompendiumArmy = {

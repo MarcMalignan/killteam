@@ -46,8 +46,30 @@ export const genestealerCults: CompendiumArmy = {
         },
       ],
     },
-    // {
-    //   name: "Wyrmblade",
-    // },
+    {
+      id: "wyrmblade",
+      name: "Wyrmblade",
+      fireTeams: [
+        {
+          id: "wyrmblade",
+          name: "Wyrmblade",
+          archetypes: ["Infiltration", "Seek and destroy"],
+          operatives: [
+            { id: "1", name: "Neophyte Leader", leader: true },
+            { id: "2", name: "Kelermorph" },
+            { id: "3", name: "Locus" },
+            { id: "4", name: "Neophyte Brood-adept" },
+            { id: "5", name: "Neophyte Gunner" },
+            { id: "6", name: "Neophyte Heavy Gunner" },
+            { id: "7", name: "Neophyte Icon Bearer" },
+            { id: "8", name: "Sanctus Sniper" },
+            { id: "9", name: "Sanctus Talon" },
+          ],
+          nbOperatives: 14,
+        },
+      ],
+      nbTeams: 1,
+      extra: true,
+    },
   ],
 };

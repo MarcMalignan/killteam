@@ -19,7 +19,7 @@ export const orks: CompendiumArmy = {
           ],
         },
         {
-          id: "kommando",
+          id: "clanKommando",
           name: "Clan Kommando",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
@@ -40,8 +40,32 @@ export const orks: CompendiumArmy = {
         },
       ],
     },
-    // {
-    //   name: "Kommando",
-    // },
+    {
+      id: "kommando",
+      name: "Kommando",
+      fireTeams: [
+        {
+          id: "kommando",
+          name: "Kommando",
+          archetypes: ["Seek and destroy", "Infiltration"],
+          operatives: [
+            { id: "1", name: "Kommando Nob", leader: true },
+            { id: "2", name: "Kommando Boy" },
+            { id: "3", name: "Kommando Grot" },
+            { id: "4", name: "Kommando Slasha Boy" },
+            { id: "5", name: "Kommando Breacha Boy" },
+            { id: "6", name: "Kommando Snipa Boy" },
+            { id: "7", name: "Kommando Dakka Boy" },
+            { id: "8", name: "Kommando Comms Boy" },
+            { id: "9", name: "Kommando Burna Boy" },
+            { id: "10", name: "Kommando Rokkit Boy" },
+            { id: "11", name: "Bomb Squig" },
+          ],
+          nbOperatives: 10,
+        },
+      ],
+      nbTeams: 1,
+      extra: true,
+    },
   ],
 };

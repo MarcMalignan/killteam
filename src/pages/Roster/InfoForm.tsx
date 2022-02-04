@@ -44,13 +44,18 @@ export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
   return (
     <Section className={className}>
       <SubTitle>Roster Information</SubTitle>
-      <Field id="faction" label="Faction:">
+      <Field
+        id="faction"
+        label="Faction:"
+        helper='Factions marked with a "*" sign are not part of the Compendium core rules.'
+      >
         <Select id="faction" value={roster.faction} onChange={onFactionChange}>
           <option value=""></option>
           {compendium.armies.map((army) =>
             army.factions.map((faction) => (
               <option key={faction.id} value={faction.id}>
                 {army.name} - {faction.name}
+                {faction.extra && ` *`}
               </option>
             ))
           )}
