@@ -126,9 +126,7 @@ export const Roster = () => {
                   onClick={save}
                 />
               </div>
-              <i className="print-only">
-                {roster.keyword && `#${roster.keyword}`}
-              </i>
+              <i className="print-only">{roster.keyword}</i>
             </div>
           </RowContainer>
         </Title>

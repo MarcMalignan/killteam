@@ -13,9 +13,9 @@ export const greyKnights: CompendiumArmy = {
           name: "Grey Knight",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
-            { id: "1", name: "Grey Knight Justicar", leader: true },
-            { id: "2", name: "Grey Knight Warrior" },
-            { id: "3", name: "Grey Knight Gunner" },
+            { id: "1", name: "Grey Knight Justicar", leader: true, stats: [3, 3, 1, 3, 3, 12] },
+            { id: "2", name: "Grey Knight Warrior", stats: [3, 3, 1, 3, 3, 11] },
+            { id: "3", name: "Grey Knight Gunner", stats: [3, 3, 1, 3, 3, 11] },
           ],
         },
       ],

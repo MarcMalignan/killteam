@@ -13,9 +13,9 @@ export const harlequins: CompendiumArmy = {
           name: "Troupe",
           archetypes: ["Seek and destroy", "Infiltration", "Recon"],
           operatives: [
-            { id: "1", name: "Player Leader", leader: true },
-            { id: "2", name: "Player Warrior" },
-            { id: "3", name: "Player Gunner" },
+            { id: "1", name: "Player Leader", leader: true, stats: [3, 3, 1, 3, 6, 9] },
+            { id: "2", name: "Player Warrior", stats: [3, 3, 1, 3, 6, 8] },
+            { id: "3", name: "Player Gunner", stats: [3, 3, 1, 3, 6, 8] },
           ],
           nbOperatives: 8,
         },

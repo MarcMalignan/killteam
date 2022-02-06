@@ -4,6 +4,7 @@ export type CompendiumOperative = {
   id: string;
   name: string;
   leader?: boolean;
+  stats: number[];
 };
 
 export type CompendiumFireTeam = {

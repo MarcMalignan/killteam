@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { FIELD_HEIGHT, Input, Select } from "../../components/Form";
 import { CompendiumFireTeam, FireTeam, Operative } from "../../types";
+import { getOperativeStat } from "../../utils";
 import { generateOperative } from "./data";
 
 interface OperativesTableProps {
@@ -74,6 +75,12 @@ export const OperativesTable = ({
           <th>#</th>
           <th>OPERATIVE</th>
           <th>NOTES (e.g. wargear options)</th>
+          <th>M</th>
+          <th>APL</th>
+          <th>GA</th>
+          <th>DF</th>
+          <th>SV</th>
+          <th>W</th>
           <th className="no-print"></th>
         </tr>
       </thead>
@@ -82,6 +89,8 @@ export const OperativesTable = ({
           const compendiumOperative = fireTeam?.operatives?.find(
             (op) => op.id === operative.compendiumId
           );
+
+          const stats = compendiumOperative?.stats || [];
 
           return (
             <tr key={operative.id}>
@@ -115,6 +124,12 @@ export const OperativesTable = ({
                   onChange={editOperative(teamIndex, opIndex, "notes")}
                 />
               </td>
+              <td>{getOperativeStat(compendiumOperative, 0)}</td>
+              <td>{getOperativeStat(compendiumOperative, 1)}</td>
+              <td>{getOperativeStat(compendiumOperative, 2)}</td>
+              <td>{getOperativeStat(compendiumOperative, 3)}</td>
+              <td>{getOperativeStat(compendiumOperative, 4, "+")}</td>
+              <td>{getOperativeStat(compendiumOperative, 5)}</td>
               <td className="no-print">
                 <Button
                   icon={faArrowUp}
@@ -186,10 +201,16 @@ const Table = styled.table`
       color: ${({ theme }) => theme.colors.accent2};
       font-size: ${({ theme }) => theme.fontSizes.md};
 
-      &:first-child {
+      &:first-child,
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(9) {
         width: ${FIELD_HEIGHT}px;
       }
-      &:nth-child(4) {
+      &:last-child {
         width: ${ACTIONS_WIDTH}px;
       }
     }
@@ -199,11 +220,21 @@ const Table = styled.table`
     tr {
       td {
         border: 1px solid ${({ theme }) => theme.colors.accent2};
+        background: #fff;
 
-        &:nth-child(4) {
-          width: ${ACTIONS_WIDTH}px;
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6),
+        &:nth-child(7),
+        &:nth-child(8),
+        &:nth-child(9) {
+          text-align: center;
+          font-size: ${({ theme }) => theme.fontSizes.sm};
+        }
+        &:last-child {
           text-align: right;
           border: none;
+          background: none;
           white-space: nowrap;
         }
       }
@@ -216,6 +247,7 @@ const Table = styled.table`
         height: auto;
         padding-top: ${({ theme }) => theme.sizes.md};
         border: none;
+        background: none;
       }
     }
   }
@@ -225,7 +257,7 @@ const TableIndex = styled.td<{ leader?: boolean }>`
   width: ${FIELD_HEIGHT}px;
   text-align: center;
   background: ${({ leader, theme }) =>
-    leader ? theme.colors.accent : theme.colors.accent2};
+    leader ? theme.colors.accent : theme.colors.accent2} !important;
   border-color: ${({ leader, theme }) =>
     leader ? theme.colors.accent : theme.colors.accent2} !important;
   border-bottom-color: ${({ theme }) => theme.colors.accent2} !important;

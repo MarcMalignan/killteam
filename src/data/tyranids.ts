@@ -13,10 +13,9 @@ export const tyranids: CompendiumArmy = {
           name: "Tyranid Warrior",
           archetypes: ["Seek and destroy", "Security"],
           operatives: [
-            { id: "1", name: "Tyranid Warrior Leader", leader: true },
-            { id: "2", name: "Tyranid Warrior Fighter" },
-            { id: "3", name: "Tyranid Warrior Gunner" },
-            { id: "4", name: "Tyranid Warrior Heavy Gunner" },
+            { id: "1", name: "Tyranid Warrior Leader", leader: true, stats: [3, 2, 1, 3, 4, 19] },
+            { id: "2", name: "Tyranid Warrior Fighter", stats: [3, 2, 1, 3, 4, 18] },
+            { id: "3", name: "Tyranid Warrior Heavy Gunner", stats: [3, 2, 1, 3, 4, 18] },
           ],
           nbOperatives: 3,
         },
@@ -25,8 +24,8 @@ export const tyranids: CompendiumArmy = {
           name: "Genestealer",
           archetypes: ["Seek and destroy", "Infiltration"],
           operatives: [
-            { id: "1", name: "Genestealer Leader", leader: true },
-            { id: "2", name: "Genestealer Fighter" },
+            { id: "1", name: "Genestealer Leader", leader: true, stats: [3, 2, 1, 3, 5, 10] },
+            { id: "2", name: "Genestealer Fighter", stats: [3, 2, 1, 3, 5, 9] },
           ],
         },
         {
@@ -34,8 +33,8 @@ export const tyranids: CompendiumArmy = {
           name: "Tyranid Swarm",
           archetypes: ["Seek and destroy", "Security", "Recon"],
           operatives: [
-            { id: "1", name: "Hormagaunt" },
-            { id: "2", name: "Termagant" },
+            { id: "1", name: "Hormagaunt", stats: [3, 2, 2, 3, 6, 7] },
+            { id: "2", name: "Termagant", stats: [3, 2, 2, 3, 6, 7] },
           ],
           nbOperatives: 8,
         },

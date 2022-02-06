@@ -1,5 +1,9 @@
 import { compendium } from "./data";
-import { CompendiumArmy, CompendiumFaction } from "./types";
+import {
+  CompendiumArmy,
+  CompendiumFaction,
+  CompendiumOperative,
+} from "./types";
 
 export const findArmy = (factionId: string): CompendiumArmy | undefined => {
   for (let i = 0; i < compendium.armies.length; i++) {
@@ -19,4 +23,14 @@ export const findFaction = (
       }
     }
   }
+};
+
+export const getOperativeStat = (
+  compendiumOperative: CompendiumOperative | undefined,
+  statIndex: number,
+  suffix = ""
+) => {
+  if (!compendiumOperative) return "";
+  const stat = compendiumOperative.stats[statIndex];
+  return stat ? `${compendiumOperative.stats[statIndex]}${suffix}` : "-";
 };
