@@ -7,6 +7,7 @@ export const thousandSons: CompendiumArmy = {
     {
       id: "thousandSons",
       name: "Thousand Sons",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/thousand-sons/",
       fireTeams: [
         {
           id: "rubricMarine",
@@ -18,7 +19,7 @@ export const thousandSons: CompendiumArmy = {
             { id: "3", name: "Rubric Marine Gunner", stats: [3, 2, 1, 3, 3, 12] },
             { id: "4", name: "Rubric Marine Icon Bearer", stats: [3, 2, 1, 3, 3, 12] },
           ],
-          nbOperatives: 3,
+          nbOperatives: 2,
         },
         {
           id: "tzaangor",
@@ -37,6 +38,7 @@ export const thousandSons: CompendiumArmy = {
     {
       id: "warpCoven",
       name: "Warp Coven",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/warpcoven/",
       fireTeams: [
         {
           id: "warpCoven",

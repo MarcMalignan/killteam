@@ -7,6 +7,7 @@ export const chaosSpaceMarines: CompendiumArmy = {
     {
       id: "traitorSM",
       name: "Traitor Space Marine",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/traitor-space-marine/",
       fireTeams: [
         {
           id: "chaosSM",

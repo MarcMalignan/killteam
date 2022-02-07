@@ -7,6 +7,7 @@ export const adeptusMechanicus: CompendiumArmy = {
     {
       id: "forgeWorld",
       name: "Forge World",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/forge-world/",
       fireTeams: [
         {
           id: "skitariiRanger",
@@ -45,6 +46,7 @@ export const adeptusMechanicus: CompendiumArmy = {
     {
       id: "hunterClade",
       name: "Hunter Clade",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/hunter-clade/",
       fireTeams: [
         {
           id: "hunterClade",

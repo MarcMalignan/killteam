@@ -7,6 +7,7 @@ export const chaosDaemons: CompendiumArmy = {
     {
       id: "daemon",
       name: "Chaos Daemon",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/chaos-daemon/",
       fireTeams: [
         {
           id: "bloodletter",
@@ -14,9 +15,9 @@ export const chaosDaemons: CompendiumArmy = {
           archetypes: ["Seek and destroy"],
           operatives: [
             { id: "1", name: "Bloodreaper", leader: true, stats: [3, 2, 1, 3, 6, 10] },
-            { id: "1", name: "Bloodletter Fighter", stats: [3, 2, 1, 3, 6, 9] },
-            { id: "1", name: "Bloodletter Icon Bearer", stats: [3, 2, 1, 3, 6, 9] },
-            { id: "1", name: "Bloodletter Horn Bearer", stats: [3, 2, 1, 3, 6, 9] },
+            { id: "2", name: "Bloodletter Fighter", stats: [3, 2, 1, 3, 6, 9] },
+            { id: "3", name: "Bloodletter Icon Bearer", stats: [3, 2, 1, 3, 6, 9] },
+            { id: "4", name: "Bloodletter Horn Bearer", stats: [3, 2, 1, 3, 6, 9] },
           ],
           nbOperatives: 6,
         },
@@ -26,9 +27,9 @@ export const chaosDaemons: CompendiumArmy = {
           archetypes: ["Seek and destroy", "Recon"],
           operatives: [
             { id: "1", name: "Alluress", leader: true, stats: [3, 2, 1, 3, 6, 9] },
-            { id: "1", name: "Daemonette Fighter", stats: [3, 2, 1, 3, 6, 8] },
-            { id: "1", name: "Daemonette Icon Bearer", stats: [3, 2, 1, 3, 6, 8] },
-            { id: "1", name: "Daemonette Horn Bearer", stats: [3, 2, 1, 3, 6, 8] },
+            { id: "2", name: "Daemonette Fighter", stats: [3, 2, 1, 3, 6, 8] },
+            { id: "3", name: "Daemonette Icon Bearer", stats: [3, 2, 1, 3, 6, 8] },
+            { id: "4", name: "Daemonette Horn Bearer", stats: [3, 2, 1, 3, 6, 8] },
           ],
           nbOperatives: 6,
         },

@@ -18,6 +18,7 @@ export type CompendiumFireTeam = {
 export type CompendiumFaction = {
   id: string;
   name: string;
+  rulesLink?: string;
   selectableKeywords?: string[];
   fireTeams: CompendiumFireTeam[];
   nbTeams?: number;

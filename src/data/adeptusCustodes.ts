@@ -7,6 +7,7 @@ export const adeptusCustodes: CompendiumArmy = {
     {
       id: "talons",
       name: "Talons of the Emperor",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/talons-of-the-emperor/",
       fireTeams: [
         {
           id: "custodian",

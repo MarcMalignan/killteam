@@ -7,6 +7,7 @@ export const orks: CompendiumArmy = {
     {
       id: "greenskin",
       name: "Greenskin",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/greenskin/",
       fireTeams: [
         {
           id: "boy",
@@ -44,6 +45,7 @@ export const orks: CompendiumArmy = {
     {
       id: "kommando",
       name: "Kommando",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/kommando/",
       fireTeams: [
         {
           id: "kommando",

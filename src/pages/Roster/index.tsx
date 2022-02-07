@@ -1,9 +1,4 @@
-import {
-  faPlus,
-  faPrint,
-  faSave,
-  faUpload,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPrint, faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { saveAs } from "file-saver";
 import React, {
   ChangeEvent,
@@ -28,7 +23,7 @@ import {
 import { Roster as RosterType } from "../../types";
 import { findArmy, findFaction } from "../../utils";
 import { generateRoster } from "./data";
-import { InfoForm } from "./InfoForm";
+import { FactionForm } from "./FactionForm";
 import { TeamForm } from "./TeamForm";
 
 export const Roster = () => {
@@ -145,7 +140,11 @@ export const Roster = () => {
 
       <Separator className="no-print" />
 
-      <InfoForm className="no-print" roster={roster} editRoster={editRoster} />
+      <FactionForm
+        className="no-print"
+        roster={roster}
+        editRoster={editRoster}
+      />
 
       <Separator />
 

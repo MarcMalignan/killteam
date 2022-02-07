@@ -7,6 +7,7 @@ export const genestealerCults: CompendiumArmy = {
     {
       id: "broodCoven",
       name: "Brood Coven",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/brood-coven/",
       fireTeams: [
         {
           id: "neophyteHybrid",
@@ -49,6 +50,7 @@ export const genestealerCults: CompendiumArmy = {
     {
       id: "wyrmblade",
       name: "Wyrmblade",
+      // TODO: check when rules are added
       fireTeams: [
         {
           id: "wyrmblade",

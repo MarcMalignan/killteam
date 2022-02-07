@@ -7,6 +7,7 @@ export const craftworlds: CompendiumArmy = {
     {
       id: "craftworld",
       name: "Craftworld",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/craftworld/",
       fireTeams: [
         {
           id: "guardianDefender",

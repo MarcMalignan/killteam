@@ -7,6 +7,7 @@ export const tauEmpire: CompendiumArmy = {
     {
       id: "hunterCadre",
       name: "Hunter Cadre",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/hunter-cadre/",
       fireTeams: [
         {
           id: "fireWarrior",
@@ -68,6 +69,7 @@ export const tauEmpire: CompendiumArmy = {
     {
       id: "mercenaryCadre",
       name: "Mercenary Cadre",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/cadre-mercenary/",
       fireTeams: [
         {
           id: "mercenary",
@@ -87,6 +89,7 @@ export const tauEmpire: CompendiumArmy = {
     {
       id: "pathfinder",
       name: "Pathfinder",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/pathfinder/",
       fireTeams: [
         {
           id: "pathfinder",

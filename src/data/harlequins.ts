@@ -7,6 +7,7 @@ export const harlequins: CompendiumArmy = {
     {
       id: "troupe",
       name: "Troupe",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/troupe/",
       fireTeams: [
         {
           id: "troupe",

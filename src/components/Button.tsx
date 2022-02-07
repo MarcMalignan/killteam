@@ -2,10 +2,13 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import { FIELD_HEIGHT } from "./Form";
+
+type ButtonSize = "md" | "sm" | "field";
 
 interface ButtonContainerProps {
   danger?: boolean;
-  small?: boolean;
+  size?: ButtonSize;
   square?: boolean;
 }
 
@@ -18,8 +21,8 @@ type ButtonProps = {
   title?: string;
 } & ButtonContainerProps;
 
-export const Button = ({ icon, label, ...rest }: ButtonProps) => (
-  <ButtonContainer {...rest}>
+export const Button = ({ icon, label, size = "md", ...rest }: ButtonProps) => (
+  <ButtonContainer size={size} {...rest}>
     {icon && <FontAwesomeIcon icon={icon} />}
     {label && <span>{label}</span>}
   </ButtonContainer>
@@ -29,17 +32,33 @@ const BUTTON_HEIGHT = 40;
 const BUTTON_HEIGHT_SM = 25;
 
 const ButtonContainer = styled.button<ButtonContainerProps>`
-  height: ${({ small }) => (small ? BUTTON_HEIGHT_SM : BUTTON_HEIGHT)}px;
-  width: ${({ small, square }) => {
+  height: ${({ size }) => {
+    switch (size) {
+      case "md":
+        return `${BUTTON_HEIGHT}px`;
+      case "sm":
+        return `${BUTTON_HEIGHT_SM}px`;
+      case "field":
+        return `${FIELD_HEIGHT}px`;
+    }
+  }};
+  width: ${({ size, square }) => {
     if (square) {
-      return `${small ? BUTTON_HEIGHT_SM : BUTTON_HEIGHT}px`;
+      switch (size) {
+        case "md":
+          return `${BUTTON_HEIGHT}px`;
+        case "sm":
+          return `${BUTTON_HEIGHT_SM}px`;
+        case "field":
+          return `${FIELD_HEIGHT}px`;
+      }
     }
     return "auto";
   }};
   margin: 0;
-  padding: ${({ small, square, theme }) => {
+  padding: ${({ size, square, theme }) => {
     if (square) return "none";
-    return small ? `0 ${theme.sizes.sm}` : `0 ${theme.sizes.md}`;
+    return size !== "md" ? `0 ${theme.sizes.sm}` : `0 ${theme.sizes.md}`;
   }};
   background: #fff;
   border: 1px solid ${({ theme }) => theme.colors.bg2};
@@ -47,8 +66,8 @@ const ButtonContainer = styled.button<ButtonContainerProps>`
     danger ? theme.colors.accent : theme.colors.accent2};
   text-transform: uppercase;
   font-family: ${({ theme }) => theme.fonts.header};
-  font-size: ${({ small, theme }) =>
-    small ? theme.fontSizes.xs : theme.fontSizes.md};
+  font-size: ${({ size, theme }) =>
+    size !== "md" ? theme.fontSizes.xs : theme.fontSizes.md};
   outline: none;
   cursor: pointer;
   transition: all 0.2s;
@@ -76,4 +95,9 @@ const ButtonContainer = styled.button<ButtonContainerProps>`
   & span:last-child {
     margin-left: ${({ theme }) => theme.sizes.sm};
   }
+`;
+
+export const FieldButton = styled(Button)`
+  margin: 0 !important;
+  border-left: none;
 `;

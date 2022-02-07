@@ -7,6 +7,7 @@ export const adeptaSororitas: CompendiumArmy = {
     {
       id: "ecclesiarchy",
       name: "Ecclesiarchy",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/ecclesiarchy/",
       fireTeams: [
         {
           id: "sister",
@@ -40,6 +41,7 @@ export const adeptaSororitas: CompendiumArmy = {
     {
       id: "novitiate",
       name: "Novitiate",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/novitiate/",
       fireTeams: [
         {
           id: "novitiate",

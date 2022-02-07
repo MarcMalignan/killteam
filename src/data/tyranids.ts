@@ -7,6 +7,7 @@ export const tyranids: CompendiumArmy = {
     {
       id: "hiveFleet",
       name: "Hive Fleet",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/hive-fleet/",
       fireTeams: [
         {
           id: "tyranidWarrior",

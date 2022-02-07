@@ -7,6 +7,7 @@ export const deathGuard: CompendiumArmy = {
     {
       id: "deathGuard",
       name: "Death Guard",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/death-guard/",
       fireTeams: [
         {
           id: "plagueMarine",

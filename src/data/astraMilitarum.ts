@@ -7,6 +7,7 @@ export const astraMilitarum: CompendiumArmy = {
     {
       id: "imperialGuard",
       name: "Imperial Guard",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/imperial-guard/",
       fireTeams: [
         {
           id: "guardsman",
@@ -36,6 +37,7 @@ export const astraMilitarum: CompendiumArmy = {
     {
       id: "veteranGuardsman",
       name: "Veteran Guardsman",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/veteran-guardsman/",
       fireTeams: [
         {
           id: "veteranGuardsman",

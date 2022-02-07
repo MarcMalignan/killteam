@@ -7,6 +7,7 @@ export const greyKnights: CompendiumArmy = {
     {
       id: "greyKnight",
       name: "Grey Knight",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/grey-knight/",
       fireTeams: [
         {
           id: "greyKnight",

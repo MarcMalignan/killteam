@@ -7,6 +7,7 @@ export const drukhari: CompendiumArmy = {
     {
       id: "commorrite",
       name: "Commorrite",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/commorrite/",
       fireTeams: [
         {
           id: "kabalite",

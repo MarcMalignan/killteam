@@ -7,6 +7,7 @@ export const necrons: CompendiumArmy = {
     {
       id: "tombWorld",
       name: "Tomb World",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/tomb-world/",
       fireTeams: [
         {
           id: "necronWarrior",

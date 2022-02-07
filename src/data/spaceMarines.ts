@@ -7,6 +7,7 @@ export const spaceMarines: CompendiumArmy = {
     {
       id: "sm",
       name: "Space Marine",
+      rulesLink: "https://wahapedia.ru/kill-team2/kill-teams/space-marine/",
       selectableKeywords: ["Deathwatch"],
       fireTeams: [
         {

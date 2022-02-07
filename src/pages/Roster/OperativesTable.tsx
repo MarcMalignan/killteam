@@ -136,7 +136,7 @@ export const OperativesTable = ({
                   title="Move operative up"
                   onClick={() => moveOperativeUp(teamIndex, opIndex)}
                   disabled={opIndex === 0}
-                  small
+                  size="sm"
                   square
                 />
                 <Button
@@ -144,7 +144,7 @@ export const OperativesTable = ({
                   title="Move operative down"
                   onClick={() => moveOperativeDown(teamIndex, opIndex)}
                   disabled={opIndex === operatives.length - 1}
-                  small
+                  size="sm"
                   square
                 />
                 <Button
@@ -152,7 +152,7 @@ export const OperativesTable = ({
                   title="Empty operative"
                   onClick={() => emptyOperative(teamIndex, opIndex)}
                   disabled={!operative.compendiumId && !operative.notes}
-                  small
+                  size="sm"
                   square
                   danger
                 />
@@ -161,7 +161,7 @@ export const OperativesTable = ({
                   title="Remove operative"
                   onClick={() => removeOperative(teamIndex, opIndex)}
                   disabled={operatives.length < 2}
-                  small
+                  size="sm"
                   square
                   danger
                 />

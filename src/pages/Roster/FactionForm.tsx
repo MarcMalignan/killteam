@@ -1,19 +1,25 @@
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 import React, { ChangeEvent, useContext, useMemo } from "react";
 import { AppContext } from "../../AppContext";
-import { Field, Input, Select } from "../../components/Form";
+import { FieldButton } from "../../components/Button";
+import { Field, Select } from "../../components/Form";
 import { Section, SubTitle } from "../../components/Page";
 import { compendium } from "../../data";
 import { Roster } from "../../types";
 import { findArmy, findFaction } from "../../utils";
 import { generateRoster } from "./data";
 
-interface InfoFormProps {
+interface FactionFormProps {
   className?: string;
   editRoster: (values: Partial<Roster>) => void;
   roster: Roster;
 }
 
-export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
+export const FactionForm = ({
+  className,
+  editRoster,
+  roster,
+}: FactionFormProps) => {
   const { faction, setFaction, setArmyBackground } = useContext(AppContext);
 
   const factionHasKeywords = useMemo(
@@ -60,6 +66,16 @@ export const InfoForm = ({ className, editRoster, roster }: InfoFormProps) => {
             ))
           )}
         </Select>
+        {faction?.rulesLink && (
+          <FieldButton
+            label="See rules"
+            icon={faBook}
+            size="field"
+            onClick={() => {
+              window.open(faction.rulesLink, "_blank").focus();
+            }}
+          />
+        )}
       </Field>
       {factionHasKeywords && (
         <Field id="keyword" label="Selectable Keyword:">
