@@ -1,4 +1,9 @@
-import { faPlus, faSave, faUpload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faPrint,
+  faSave,
+  faUpload,
+} from "@fortawesome/free-solid-svg-icons";
 import { saveAs } from "file-saver";
 import React, {
   ChangeEvent,
@@ -109,10 +114,10 @@ export const Roster = () => {
             <div>
               <div className="no-print">
                 <Button
-                  label="Load"
                   icon={faUpload}
-                  title="Upload roster"
+                  title="Load roster"
                   onClick={loadInputClick}
+                  square
                 />
                 <LoadInput
                   ref={loadInputRef}
@@ -120,10 +125,16 @@ export const Roster = () => {
                   onChange={loadInputChange}
                 />
                 <Button
-                  label="Save"
                   icon={faSave}
                   title="Save roster"
                   onClick={save}
+                  square
+                />
+                <Button
+                  icon={faPrint}
+                  title="Print roster"
+                  onClick={() => window.print()}
+                  square
                 />
               </div>
               <i className="print-only">{roster.keyword}</i>
